@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
   Bike,
+  CarFront,
   FolderOpen,
   Mail,
   House,
@@ -140,6 +141,12 @@ function ProjectArt({ project }: { project: Project }) {
             AV<span>CARPINTERÍA</span>
           </span>
           <div className="wood-lines" />
+        </div>
+      )}
+      {project.visual === "car" && (
+        <div className="bike-art">
+          <CarFront size={92} strokeWidth={1} />
+          <span>KOTXEA / BIDAIAK PARTEKATUZ</span>
         </div>
       )}
       <span className="concept-label">Composición conceptual</span>

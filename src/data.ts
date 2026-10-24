@@ -25,7 +25,7 @@ export type Project = {
   description: string;
   detail: string;
   technologies: string[];
-  visual: "kitchen" | "layers" | "bike" | "wood";
+  visual: "kitchen" | "layers" | "bike" | "wood" | "car";
   concept: string;
   link?: string;
 };
@@ -84,6 +84,20 @@ export const projects: Project[] = [
       "Presentación de servicios y galería de trabajos con diseño responsive y contacto por WhatsApp. Incluye formularios con PHP, PHPMailer y SMTP. Desarrollada y pendiente de su despliegue en un dominio propio del cliente.",
     technologies: ["HTML / CSS", "JavaScript", "PHP", "SMTP"],
     link: "https://urtxe.github.io/carpinteria-val/",
+  },
+  {
+    id: "kotxea",
+    number: "06",
+    name: "Kotxea",
+    category: "Aplicación · Coche compartido",
+    status: "Publicada",
+    visual: "car",
+    concept: "Viajes compartidos y balance de turnos",
+    description: "Organización de viajes y turnos para compartir coche.",
+    detail:
+      "Aplicación en euskera para compartir coche dentro de un grupo. Permite añadir participantes, registrar quién conduce y quién viaja, consultar el historial y calcular el balance de turnos de cada persona. Los datos se guardan en el navegador, con copias de seguridad en JSON.",
+    technologies: ["HTML", "CSS", "JavaScript", "localStorage"],
+    link: "https://urtxe.github.io/kotxea-app/",
   },
 ];
 export const stack = [

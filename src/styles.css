@@ -2314,3 +2314,40 @@ ul {
   color: var(--muted);
   margin-top: 20px;
 }
+
+.art-car {
+  background: #24243c;
+  color: #d1c4f4;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 49px,
+    #b5a1ff0a 50px,
+    transparent 51px
+  );
+}
+.project-car {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+}
+.project-car .project-art {
+  height: 100%;
+  min-height: 230px;
+  border-bottom: 0;
+  border-right: 1px solid var(--border);
+}
+.project-car .project-description {
+  min-height: 0;
+}
+@media (max-width: 640px) {
+  .project-car {
+    display: block;
+  }
+  .project-car .project-art {
+    height: 185px;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}

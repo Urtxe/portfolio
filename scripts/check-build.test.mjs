@@ -13,17 +13,18 @@ test("el build publica HTML completo, enlaces internos válidos y SEO coherente"
     "Oreinbike",
     "Junior Software Developer",
     "Carpintería Alex Val",
+    "Kotxea",
     "PKF Attest",
   ])
     assert.ok(html.includes(title), title);
   for (const removed of [
     "Trading Bot",
     "AI Content Agent",
-    "Kotxea",
     "Hecho con criterio y curiosidad",
   ])
     assert.ok(!html.includes(removed), removed);
   assert.ok(html.includes('href="https://pi4-urtxe.tailb33363.ts.net"'));
+  assert.ok(html.includes('href="https://urtxe.github.io/kotxea-app/"'));
   assert.ok(html.includes("Todos los derechos reservados"));
   for (const [, id] of html.matchAll(/href="#([^"]+)"/g))
     assert.ok(html.includes(`id="${id}"`), `Destino #${id}`);
