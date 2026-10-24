@@ -62,27 +62,28 @@ export const projects: Project[] = [
     number: "04",
     name: "Oreinbike",
     category: "Web · Proyecto para cliente",
-    status: "Pendiente de dominio del cliente",
+    status: "Demo pública · dominio pendiente",
     visual: "bike",
     concept: "Publicación en dominio del cliente pendiente",
     description: "Web de una iniciativa vinculada a la cultura MTB.",
     detail:
       "Proyecto web en euskera sobre infraestructuras ciclistas, instalaciones, comunidad y formación MTB. Incluye presentación de servicios, trabajos realizados y galerías. Desarrollado y pendiente de su despliegue en un dominio propio del cliente.",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive"],
+    link: "https://urtxe.github.io/Oreinbike/",
   },
   {
     id: "carpinteria",
     number: "05",
     name: "Carpintería Alex Val",
     category: "Web · Proyecto para cliente",
-    status: "Pendiente de dominio del cliente",
+    status: "Demo pública · dominio pendiente",
     visual: "wood",
     concept: "Publicación en dominio del cliente pendiente",
     description: "Web corporativa para un profesional de carpintería.",
     detail:
       "Presentación de servicios y galería de trabajos con diseño responsive y contacto por WhatsApp. Incluye formularios con PHP, PHPMailer y SMTP. Desarrollada y pendiente de su despliegue en un dominio propio del cliente.",
     technologies: ["HTML / CSS", "JavaScript", "PHP", "SMTP"],
-    link: "https://github.com/Urtxe/carpinteria-val",
+    link: "https://urtxe.github.io/carpinteria-val/",
   },
 ];
 export const stack = [

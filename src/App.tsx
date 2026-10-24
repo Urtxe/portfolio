@@ -4,7 +4,6 @@ import {
   Bike,
   FolderOpen,
   Mail,
-  FileCode2,
   House,
   BriefcaseBusiness,
   Check,
@@ -166,12 +165,8 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="project-bottom">
           {project.link ? (
             <External href={project.link}>
-              {project.id === "meritum" ? "Probar Meritum" : "Ver código"}{" "}
-              {project.id === "meritum" ? (
-                <ExternalLink size={14} />
-              ) : (
-                <FileCode2 size={14} />
-              )}
+              {project.id === "meritum" ? "Probar Meritum" : "Visitar web"}{" "}
+              <ExternalLink size={14} />
             </External>
           ) : (
             <span className="mono">{project.concept}</span>
@@ -546,13 +541,6 @@ function App() {
                 >
                   <Play size={15} />
                   Google Play
-                </External>
-                <External
-                  href="https://github.com/Urtxe/Calendario-Laboral"
-                  label="Código de Balance Laboral en GitHub"
-                  className="project-icon-link"
-                >
-                  <Github size={20} />
                 </External>
               </div>
             </div>
