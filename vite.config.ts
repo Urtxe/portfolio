@@ -36,7 +36,7 @@ export default defineConfig(({ mode }) => {
         "https://github.com/Urtxe",
         "https://www.linkedin.com/in/mikel-urtxegi-garcia-18568566/",
       ],
-      knowsLanguage: ["es", "eu"],
+      knowsLanguage: ["es", "eu", "en"],
       knowsAbout: [
         "Full-Stack",
         "Python",

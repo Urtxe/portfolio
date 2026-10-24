@@ -593,60 +593,13 @@ function App() {
           </div>
         </section>
         <section
-          id="stack"
-          className="section stack-section"
-          aria-labelledby="stack-title"
-        >
-          <div className="container">
-            <SectionHeading
-              id="stack-title"
-              number="02"
-              label="TECNOLOGÍAS Y HERRAMIENTAS"
-              title="Tecnologías que utilizo."
-            >
-              Herramientas utilizadas en mi trabajo, mis proyectos
-              <br />y mi formación.
-            </SectionHeading>
-            <div className="stack-grid">
-              {stack.map((group, index) => (
-                <article
-                  className={`stack-card stack-card-${index}`}
-                  key={group.title}
-                >
-                  <div className="stack-card-top">
-                    <group.icon size={23} />
-                    <span className="mono">0{index + 1}</span>
-                  </div>
-                  <h3>{group.title}</h3>
-                  <p>{group.description}</p>
-                  <Tags items={group.primary} />
-                  <span className="stack-secondary">{group.secondary}</span>
-                </article>
-              ))}
-            </div>
-            <div className="stack-note">
-              <Plus size={16} />
-              <p>
-                <strong>Conocimientos complementarios:</strong> Java, C#, .NET,
-                Oracle SQL, JSON, AJAX y Bootstrap. VS Code, Visual Studio y
-                PyCharm como herramientas de desarrollo.
-              </p>
-            </div>
-            <p className="stack-context">
-              Mi experiencia combina trabajo en PKF Attest y proyectos propios.
-              La IA aplicada, la automatización y buena parte de la
-              infraestructura proceden de desarrollo práctico personal.
-            </p>
-          </div>
-        </section>
-        <section
           id="sobre-mi"
           className="section about-section container"
           aria-labelledby="about-title"
         >
           <div className="about-intro">
             <p className="eyebrow">
-              <span>03 /</span> SOBRE MÍ
+              <span>02 /</span> SOBRE MÍ
             </p>
             <h2 id="about-title">Sobre mí y mi recorrido.</h2>
             <div className="about-signature">
@@ -660,7 +613,10 @@ function App() {
                 Euskera <b>Nativo</b>
               </span>
               <span>
-                Español <b>Fluido</b>
+                Castellano <b>Nativo</b>
+              </span>
+              <span>
+                Inglés <b>Fluido</b>
               </span>
             </div>
           </div>
@@ -702,7 +658,7 @@ function App() {
         >
           <SectionHeading
             id="timeline-title"
-            number="04"
+            number="03"
             label="EXPERIENCIA Y FORMACIÓN"
             title="Experiencia y formación."
           >
@@ -744,6 +700,53 @@ function App() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+        <section
+          id="stack"
+          className="section stack-section"
+          aria-labelledby="stack-title"
+        >
+          <div className="container">
+            <SectionHeading
+              id="stack-title"
+              number="04"
+              label="TECNOLOGÍAS Y HERRAMIENTAS"
+              title="Tecnologías que utilizo."
+            >
+              Herramientas utilizadas en mi trabajo, mis proyectos
+              <br />y mi formación.
+            </SectionHeading>
+            <div className="stack-grid">
+              {stack.map((group, index) => (
+                <article
+                  className={`stack-card stack-card-${index}`}
+                  key={group.title}
+                >
+                  <div className="stack-card-top">
+                    <group.icon size={23} />
+                    <span className="mono">0{index + 1}</span>
+                  </div>
+                  <h3>{group.title}</h3>
+                  <p>{group.description}</p>
+                  <Tags items={group.primary} />
+                  <span className="stack-secondary">{group.secondary}</span>
+                </article>
+              ))}
+            </div>
+            <div className="stack-note">
+              <Plus size={16} />
+              <p>
+                <strong>Conocimientos complementarios:</strong> Java, C#, .NET,
+                Oracle SQL, JSON, AJAX y Bootstrap. VS Code, Visual Studio y
+                PyCharm como herramientas de desarrollo.
+              </p>
+            </div>
+            <p className="stack-context">
+              Mi experiencia combina trabajo en PKF Attest y proyectos propios.
+              La IA aplicada, la automatización y buena parte de la
+              infraestructura proceden de desarrollo práctico personal.
+            </p>
           </div>
         </section>
         <section

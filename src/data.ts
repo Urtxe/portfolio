@@ -12,9 +12,9 @@ export const profile = {
 };
 export const navigation = [
   { id: "proyectos", label: "Proyectos" },
-  { id: "stack", label: "Stack" },
   { id: "sobre-mi", label: "Sobre mí" },
   { id: "trayectoria", label: "Trayectoria" },
+  { id: "stack", label: "Stack" },
 ];
 export type Project = {
   id: string;
