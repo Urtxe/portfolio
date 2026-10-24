@@ -1,10 +1,10 @@
 # Mikel Urtxegi · Portfolio
 
-Portfolio personal en español de Mikel Urtxegi García, Software Developer en Donostia. React, TypeScript, Vite, Tailwind CSS e iconos Lucide. Sitio estático sin backend, analítica, cookies de seguimiento ni servicios de pago.
+Portfolio personal en español de Mikel Urtxegi García, Software Developer en Donostia. React, TypeScript, Vite, CSS propio e iconos Lucide. Sitio estático sin backend, analítica, cookies de seguimiento ni servicios de pago.
 
 ## Desarrollo
 
-Requiere Node.js 24 y npm.
+Requiere Node.js 26.12.1 y npm 12.2.1. La versión de Node está fijada en `.nvmrc`; ambas versiones corresponden a versiones estables verificadas al actualizar este proyecto. Node se utiliza solo para construir: la web publicada es estática.
 
 ```sh
 npm ci
@@ -16,6 +16,7 @@ La URL predeterminada es `http://localhost:5173/portfolio/`. Vite muestra la dir
 ## Comprobaciones y producción
 
 ```sh
+npm run audit
 npm run lint
 npm run typecheck
 npm run build
@@ -46,7 +47,7 @@ Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/
 
 ### Fidelidad del contenido
 
-Los datos profesionales y las certificaciones proceden de la información facilitada por Mikel. No se atribuyen años de experiencia profesional en desarrollo, niveles de inglés, usuarios ni resultados comerciales. No se incluyen enlaces de credenciales que no se han facilitado o verificado. Se verificaron las páginas públicas de Balance Laboral, Google Play, Calendario-Laboral, Carpintería Val y Kotxea. LinkedIn restringe la consulta automatizada; se conserva el enlace oficial facilitado.
+Los datos profesionales y las certificaciones proceden de la información facilitada por Mikel. No se atribuyen años de experiencia profesional en desarrollo, niveles de inglés, usuarios ni resultados comerciales. No se incluyen enlaces de credenciales que no se han facilitado o verificado. El listado presenta Balance Laboral como proyecto principal, Labezio en desarrollo local, Meritum en desarrollo con versión de prueba, y Oreinbike y Carpintería Alex Val pendientes del dominio de sus clientes. La demo de Meritum responde desde el equipo de desarrollo; su acceso externo depende de su configuración de red. La información de Oreinbike se contrastó con su proyecto local sin modificarlo. Se verificaron las páginas públicas de Balance Laboral, Google Play, Calendario-Laboral y Carpintería Val. LinkedIn restringe la consulta automatizada; se conserva el enlace oficial facilitado.
 
 ## Dominio y rutas
 
@@ -66,11 +67,11 @@ Después ejecuta `npm run build`. No se configura un dominio que todavía no exi
 
 Repositorio: `https://github.com/Urtxe/portfolio`.
 
-El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, lint, compilación, prerenderizado y prueba del resultado. Solo despliega `main`; las pull requests se validan sin publicar. En Settings → Pages, el origen debe ser **GitHub Actions**. Cada push a `main` publica automáticamente el sitio en `https://urtxe.github.io/portfolio/`.
+El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, auditoría de dependencias, lint, compilación, prerenderizado y prueba del resultado. Solo despliega `main`; las pull requests se validan sin publicar. En Settings → Pages, el origen debe ser **GitHub Actions**. Cada push a `main` publica automáticamente el sitio en `https://urtxe.github.io/portfolio/`.
 
 ## Otros alojamientos estáticos
 
-- **Cloudflare Pages:** conecta este repositorio, comando `npm run build`, directorio `dist`, Node.js 24 y variable `SITE_URL` con la URL asignada o tu dominio. Sin funciones ni backend.
+- **Cloudflare Pages:** conecta este repositorio, comando `npm run build`, directorio `dist`, Node.js 26.12.1 y variable `SITE_URL` con la URL asignada o tu dominio. Sin funciones ni backend.
 - **Firebase Hosting:** usa un proyecto Firebase independiente; configura `dist` como directorio público. Este sitio de una página no necesita reescrituras de SPA. Añade `SITE_URL` antes de construir y despliega únicamente Hosting en el proyecto elegido explícitamente.
 - **Cualquier servidor estático:** publica el contenido de `dist` en la ruta correspondiente a `SITE_URL`. No requiere Node.js en producción.
 
@@ -79,3 +80,14 @@ El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, li
 HTML semántico, salto al contenido, navegación por teclado, foco visible, menú móvil con cierre mediante Escape, navegación activa, contraste en ambos temas y respeto a `prefers-reduced-motion`. El tema sigue al sistema si no hay elección guardada; el selector conserva la preferencia local. Copiar email ofrece confirmación accesible y un estado de error real, con enlace de correo siempre disponible. Sin formulario ni envíos simulados.
 
 Las capturas y los informes de revisión local se guardan en `output/playwright/`, excluido de Git.
+
+## Actualizaciones y dependencias
+
+Las dependencias directas se contrastan con el canal estable `latest` del registro npm. `package-lock.json` fija el árbol completo instalado. Se actualizan las transitivas dentro de los rangos compatibles, sin forzar versiones incompatibles con overrides.
+
+```sh
+npm outdated
+npm run audit
+```
+
+La auditoría incluye dependencias de desarrollo y bloquea el despliegue ante vulnerabilidades conocidas de cualquier severidad. Un resultado de cero vulnerabilidades significa cero avisos detectados por npm en ese momento; no es una garantía absoluta frente a vulnerabilidades futuras o no publicadas. Las acciones de GitHub están actualizadas y fijadas por SHA al commit de su versión oficial, y el checkout no conserva credenciales.

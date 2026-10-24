@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
-  ArrowDown,
-  ArrowUp,
-  ArrowUpRight,
+  Bike,
+  FolderOpen,
+  Mail,
+  FileCode2,
+  House,
+  BriefcaseBusiness,
   Check,
-  CheckCheck,
-  ChevronRight,
   Code2,
   Copy,
   ExternalLink,
@@ -18,7 +19,6 @@ import {
   Phone,
   Play,
   Plus,
-  Sparkles,
   Sun,
   Terminal,
   X,
@@ -107,9 +107,9 @@ function ProjectArt({ project }: { project: Project }) {
             L<span>01</span>
           </span>
           <div className="recipe-caption">
-            Una buena receta.
+            Recetas e ingredientes.
             <br />
-            Una estructura mejor.
+            Costes y escandallos.
           </div>
         </div>
       )}
@@ -129,39 +129,10 @@ function ProjectArt({ project }: { project: Project }) {
           </span>
         </div>
       )}
-      {project.visual === "signals" && (
-        <div className="signal-art">
-          <svg viewBox="0 0 500 150" fill="none">
-            <path
-              d="M0 110H500M0 60H500M0 10H500"
-              stroke="currentColor"
-              opacity=".12"
-            />
-            <path
-              d="M0 100L35 100L50 80L68 125L90 30L108 110L135 86L170 86L190 60L214 104L240 104L260 24L280 135L304 66L330 90L360 90L384 45L407 105L435 77L465 77L480 60H500"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-          </svg>
-          <span>
-            capture <ChevronRight size={12} /> process{" "}
-            <ChevronRight size={12} /> evaluate
-          </span>
-        </div>
-      )}
-      {project.visual === "agent" && (
-        <div className="agent-art">
-          <span className="agent-node">
-            <Terminal size={22} />
-          </span>
-          <i />
-          <span className="agent-node main-node">
-            <Sparkles size={30} />
-          </span>
-          <i />
-          <span className="agent-node">
-            <CheckCheck size={22} />
-          </span>
+      {project.visual === "bike" && (
+        <div className="bike-art">
+          <Bike size={92} strokeWidth={1} />
+          <span>OREINBIKE / MTB KULTURA</span>
         </div>
       )}
       {project.visual === "wood" && (
@@ -195,7 +166,12 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="project-bottom">
           {project.link ? (
             <External href={project.link}>
-              Ver código <ArrowUpRight size={16} />
+              {project.id === "meritum" ? "Probar Meritum" : "Ver código"}{" "}
+              {project.id === "meritum" ? (
+                <ExternalLink size={14} />
+              ) : (
+                <FileCode2 size={14} />
+              )}
             </External>
           ) : (
             <span className="mono">{project.concept}</span>
@@ -318,7 +294,7 @@ function App() {
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a href="#contacto" className="header-contact">
-              Hablemos <ArrowUpRight size={15} />
+              Hablemos <MessageCircle size={15} />
             </a>
             <button
               className="icon-button menu-button"
@@ -345,7 +321,7 @@ function App() {
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
-                <ArrowUpRight size={16} />
+                <span className="nav-marker" aria-hidden="true" />
               </a>
             ),
           )}
@@ -369,37 +345,35 @@ function App() {
           <div className="hero-layout">
             <div className="hero-copy">
               <h1 id="hero-title">
-                Construyo soluciones
-                <br className="desktop-break" /> digitales.
+                Mikel Urtxegi.
                 <br />
-                <span className="muted-title">De la idea a</span>
+                <span className="muted-title">Software</span>
                 <br />
                 <span className="accent-text">
-                  producción<span className="title-period">.</span>
+                  Developer<span className="title-period">.</span>
                 </span>
               </h1>
               <p className="hero-description">
-                Desarrollo Full-Stack, inteligencia artificial y automatización.
-                Convierto problemas reales en aplicaciones que se pueden usar.
+                Desarrollador Full-Stack en PKF Attest. Trabajo con Python,
+                JavaScript y Docker, y desarrollo proyectos propios de
+                aplicaciones web, inteligencia artificial y automatización.
               </p>
               <div className="hero-buttons">
                 <a href="#proyectos" className="button primary-button">
-                  Explorar proyectos <ArrowDown size={17} />
+                  Ver proyectos <FolderOpen size={16} />
                 </a>
                 <a href="#contacto" className="button secondary-button">
-                  Contactar <ArrowUpRight size={17} />
+                  Contactar <Mail size={16} />
                 </a>
               </div>
               <div className="hero-socials">
                 <External href={profile.github}>
                   <Github size={16} />
                   GitHub
-                  <ArrowUpRight size={13} />
                 </External>
                 <External href={profile.linkedin}>
                   <Linkedin size={16} />
                   LinkedIn
-                  <ArrowUpRight size={13} />
                 </External>
                 <span className="hero-social-divider" />
                 <span className="mono">Python · JavaScript · Docker</span>
@@ -407,7 +381,7 @@ function App() {
             </div>
             <div
               className="hero-visual"
-              aria-label="Mi enfoque: entender, construir y desplegar"
+              aria-label="Perfil técnico: Full-Stack, Python, JavaScript e inteligencia artificial"
             >
               <div className="visual-cross cross-one">+</div>
               <div className="visual-cross cross-two">+</div>
@@ -421,31 +395,30 @@ function App() {
                     <span />
                     <span />
                   </span>
-                  <span>product.flow</span>
+                  <span>perfil.ts</span>
                   <Code2 size={14} />
                 </div>
                 <div className="build-card-content">
                   <span className="code-comment">
-                    // Un problema real. Una solución útil.
+                    // Mikel Urtxegi · Donostia
                   </span>
                   <p>
-                    <span className="code-purple">const</span> idea{" "}
-                    <span className="muted">=</span>{" "}
-                    <span className="code-string">entender();</span>
+                    <span className="code-purple">const</span> perfil = {"{"}
                   </p>
                   <p>
-                    <span className="code-purple">await</span> construir(idea);
+                    &nbsp; rol:{" "}
+                    <span className="code-string">"Full-Stack"</span>,
                   </p>
                   <p>
-                    <span className="code-purple">await</span> desplegar();
-                  </p>
-                  <div className="code-spacer" />
-                  <p>
-                    <span className="code-comment">// Y seguir mejorando.</span>
+                    &nbsp; stack: [
+                    <span className="code-string">"Python", "JS"</span>],
                   </p>
                   <p>
-                    producto.<span className="code-string">evolucionar</span>();
-                    <span className="code-cursor" />
+                    &nbsp; intereses: [
+                    <span className="code-string">"IA", "Web"</span>]
+                  </p>
+                  <p>
+                    {"}"};<span className="code-cursor" />
                   </p>
                 </div>
                 <div className="build-card-footer">
@@ -453,19 +426,19 @@ function App() {
                     <GitBranch size={12} /> main
                   </span>
                   <span>
-                    <span className="status-dot" /> build passing
+                    <span className="status-dot" /> software developer
                   </span>
                 </div>
               </div>
               <div className="shipping-label">
                 <span className="shipping-icon">
-                  <Check size={17} />
+                  <Code2 size={17} />
                 </span>
                 <span>
-                  Ideas que salen del editor.
-                  <small>Y llegan a producción.</small>
+                  Junior Software Developer
+                  <small>PKF Attest · desde septiembre de 2026</small>
                 </span>
-                <ArrowUpRight size={17} />
+                <BriefcaseBusiness size={15} />
               </div>
               <span className="visual-coordinate mono">
                 43.3183° N &nbsp; 1.9812° W
@@ -473,9 +446,9 @@ function App() {
             </div>
           </div>
           <div className="hero-bottom">
-            <span className="mono">Pensar. Construir. Publicar. Iterar.</span>
+            <span className="mono">Full-Stack · IA · Automatización</span>
             <a href="#proyectos" className="scroll-link">
-              Sigue explorando <ArrowDown size={14} />
+              Proyectos y trayectoria <FolderOpen size={13} />
             </a>
           </div>
         </section>
@@ -487,12 +460,12 @@ function App() {
           <SectionHeading
             id="projects-title"
             number="01"
-            label="PROYECTOS SELECCIONADOS"
-            title="Menos teoría. Más producto."
+            label="PROYECTOS"
+            title="Aplicaciones y proyectos web."
           >
-            Aplicaciones nacidas de necesidades reales.
+            Balance Laboral es mi aplicación principal.
             <br />
-            Cada una, una forma distinta de resolver un problema.
+            También desarrollo aplicaciones propias y webs para clientes.
           </SectionHeading>
           <article className="featured-project" aria-labelledby="balance-title">
             <div className="featured-copy">
@@ -511,9 +484,7 @@ function App() {
               </div>
               <h3 id="balance-title">Balance Laboral</h3>
               <p className="featured-lead">
-                Tu jornada, tus datos.
-                <br />
-                El control, en tus manos.
+                Registro de jornada y balance laboral anual.
               </p>
               <p className="featured-description">
                 Nació de una necesidad que conocí en hostelería: entender las
@@ -566,7 +537,7 @@ function App() {
                   href="https://balancelaboral.es"
                   className="button primary-button"
                 >
-                  Visitar aplicación <ArrowUpRight size={16} />
+                  Abrir Balance Laboral <ExternalLink size={14} />
                 </External>
                 <External
                   href="https://play.google.com/store/apps/details?id=es.balancelaboral.app"
@@ -610,7 +581,7 @@ function App() {
               <div className="media-caption">
                 <span>CAPTURA REAL · VISTA PÚBLICA</span>
                 <span>
-                  Diseño → desarrollo → despliegue <ArrowUpRight size={13} />
+                  Aplicación web y Android <Code2 size={13} />
                 </span>
               </div>
             </div>
@@ -619,28 +590,6 @@ function App() {
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
-          <div className="lab-strip">
-            <span className="lab-symbol">
-              <Terminal size={24} />
-            </span>
-            <div>
-              <p className="eyebrow">EL LABORATORIO SIGUE ABIERTO</p>
-              <p>
-                También experimento con pequeñas herramientas y servicios
-                autoalojados.
-              </p>
-              <span>
-                Kotxea, para organizar turnos de conducción · Raspberry Control
-                Center, para supervisar mi servidor.
-              </span>
-            </div>
-            <External
-              href="https://github.com/Urtxe/kotxea-app"
-              className="lab-link"
-            >
-              Explorar Kotxea <ArrowUpRight size={17} />
-            </External>
           </div>
         </section>
         <section
@@ -653,11 +602,10 @@ function App() {
               id="stack-title"
               number="02"
               label="TECNOLOGÍAS Y HERRAMIENTAS"
-              title="El stack al servicio de la idea."
+              title="Tecnologías que utilizo."
             >
-              Elijo herramientas para resolver problemas.
-              <br />
-              Estos son mis entornos de trabajo y aprendizaje.
+              Herramientas utilizadas en mi trabajo, mis proyectos
+              <br />y mi formación.
             </SectionHeading>
             <div className="stack-grid">
               {stack.map((group, index) => (
@@ -679,14 +627,14 @@ function App() {
             <div className="stack-note">
               <Plus size={16} />
               <p>
-                <strong>También en mi mochila:</strong> Java, C#, .NET, Oracle
-                SQL, JSON, AJAX y Bootstrap. VS Code, Visual Studio y PyCharm
-                como herramientas de desarrollo.
+                <strong>Conocimientos complementarios:</strong> Java, C#, .NET,
+                Oracle SQL, JSON, AJAX y Bootstrap. VS Code, Visual Studio y
+                PyCharm como herramientas de desarrollo.
               </p>
             </div>
             <p className="stack-context">
-              Mi experiencia combina prácticas profesionales y proyectos
-              propios. La IA aplicada, la automatización y buena parte de la
+              Mi experiencia combina trabajo en PKF Attest y proyectos propios.
+              La IA aplicada, la automatización y buena parte de la
               infraestructura proceden de desarrollo práctico personal.
             </p>
           </div>
@@ -700,11 +648,7 @@ function App() {
             <p className="eyebrow">
               <span>03 /</span> SOBRE MÍ
             </p>
-            <h2 id="about-title">
-              Primero, entender.
-              <br />
-              Después, construir.
-            </h2>
+            <h2 id="about-title">Sobre mí y mi recorrido.</h2>
             <div className="about-signature">
               <span className="signature-mark">mu_</span>
               <div>
@@ -722,38 +666,33 @@ function App() {
           </div>
           <div className="about-copy">
             <p className="about-lead">
-              Antes de escribir código, pasé más de 15 años trabajando con
-              personas, equipos y problemas que había que resolver en el
-              momento.
+              Soy Mikel Urtxegi, desarrollador de software en Donostia. Desde
+              septiembre de 2026 trabajo como Junior Software Developer en PKF
+              Attest.
             </p>
             <p>
-              La hostelería me enseñó a organizarme, asumir responsabilidades y
-              entender lo que necesita quien está al otro lado. Hoy aplico esa
-              experiencia al desarrollo de software.
+              Mi trayectoria anterior está vinculada a la hostelería, donde
+              trabajé durante más de 15 años, aproximadamente diez en el entorno
+              de NH. Después decidí orientar mi carrera hacia el desarrollo de
+              software.
             </p>
             <p>
-              Decidí cambiar de rumbo, completé DAW en ILERNA y realicé cuatro
-              meses de prácticas en PKF Attest. Ahora continúo mi formación con
-              un Bachelor en Informática en UNIPRO y construyo mis propias
-              aplicaciones.
+              Completé el ciclo de Desarrollo de Aplicaciones Web en ILERNA en
+              junio de 2026 y realicé cuatro meses de prácticas en PKF Attest.
+              Actualmente continúo mi formación con el Bachelor en Informática
+              de UNIPRO.
             </p>
             <p>
-              Mi experiencia profesional como desarrollador es reciente, pero ya
-              he recorrido el camino de una idea a producción. Disfruto
-              conectando las piezas: una interfaz útil, un backend que funcione,
-              los datos, el despliegue y lo que viene después.
+              En mis proyectos trabajo con interfaces web, backend, bases de
+              datos y despliegues. Balance Laboral reúne una parte importante de
+              ese trabajo y conecta con una necesidad que conocí durante mi
+              etapa en hostelería.
             </p>
             <p>
-              Uso IA como apoyo al desarrollo y la integro en mis proyectos
-              cuando aporta una solución concreta. Me interesa aprender, probar
-              y entender por qué funciona lo que construyo.
+              También utilizo herramientas de inteligencia artificial como apoyo
+              al desarrollo e integro funcionalidades de IA y automatización en
+              aplicaciones propias.
             </p>
-            <div className="about-principle">
-              <span className="status-dot" />
-              <span>
-                Software útil. Aprendizaje continuo. Cuidado por los detalles.
-              </span>
-            </div>
           </div>
         </section>
         <section
@@ -765,11 +704,10 @@ function App() {
             id="timeline-title"
             number="04"
             label="EXPERIENCIA Y FORMACIÓN"
-            title="Un recorrido con intención."
+            title="Experiencia y formación."
           >
-            Una nueva etapa profesional.
-            <br />
-            Una experiencia anterior que suma.
+            Mi actividad actual en desarrollo de software
+            <br />y la formación que la acompaña.
           </SectionHeading>
           <div className="timeline">
             {timeline.map((item) => (
@@ -789,11 +727,7 @@ function App() {
               <p className="eyebrow">
                 <span>+</span> FORMACIÓN CONTINUA
               </p>
-              <h3>
-                Seguir aprendiendo
-                <br />
-                forma parte del trabajo.
-              </h3>
+              <h3>Certificaciones y cursos.</h3>
               <p>Certificaciones y cursos completados.</p>
             </div>
             <ul className="certification-list">
@@ -820,7 +754,7 @@ function App() {
           <div className="container">
             <div className="contact-top">
               <p className="eyebrow">
-                <span>05 /</span> SIGUIENTE CONVERSACIÓN
+                <span>05 /</span> CONTACTO
               </p>
               <span className="contact-location">
                 <MapPin size={14} />
@@ -830,18 +764,17 @@ function App() {
             <div className="contact-layout">
               <div>
                 <h2 id="contact-title">
-                  ¿Construimos
-                  <br />
-                  algo <span>útil?</span>
-                  <ArrowUpRight className="contact-arrow" />
+                  ¿<span>Hablamos?</span>
+                  <MessageCircle className="contact-symbol" strokeWidth={1} />
                 </h2>
                 <p>
-                  ¿Tienes un proyecto en mente o quieres hablar sobre una
-                  oportunidad? Me encantará conocerlo.
+                  Mi próximo proyecto puede ser el tuyo. Si quieres comentar una
+                  idea o simplemente ponerte en contacto conmigo, puedes
+                  escribirme.
                 </p>
                 <a className="contact-email" href={`mailto:${profile.email}`}>
                   {profile.email}
-                  <ArrowUpRight size={23} />
+                  <Mail size={20} />
                 </a>
                 <div className="copy-row">
                   <button onClick={copyEmail} className="copy-button">
@@ -863,28 +796,24 @@ function App() {
                     <Linkedin size={18} />
                     LinkedIn
                   </span>
-                  <ArrowUpRight size={18} />
                 </External>
                 <External href={profile.github}>
                   <span>
                     <Github size={18} />
                     GitHub
                   </span>
-                  <ArrowUpRight size={18} />
                 </External>
                 <a href={`tel:${profile.phone}`}>
                   <span>
                     <Phone size={18} />
                     +34 667 808 347
                   </span>
-                  <ArrowUpRight size={18} />
                 </a>
                 <External href="https://wa.me/34667808347">
                   <span>
                     <MessageCircle size={18} />
                     También por WhatsApp
                   </span>
-                  <ArrowUpRight size={18} />
                 </External>
               </div>
             </div>
@@ -899,10 +828,10 @@ function App() {
         </a>
         <p>
           © {currentYear} Mikel Urtxegi{" "}
-          <span>· Hecho con criterio y curiosidad.</span>
+          <span>· Todos los derechos reservados.</span>
         </p>
         <a href="#inicio" className="back-top">
-          Volver arriba <ArrowUp size={15} />
+          Inicio <House size={14} />
         </a>
       </footer>
     </>
