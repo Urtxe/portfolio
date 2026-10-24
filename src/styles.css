@@ -49,7 +49,7 @@
   --raised: #ddebe8;
   --text: #12302b;
   --muted: #4e6964;
-  --dim: #526f68;
+  --dim: #4e6a63;
   --border: #c5dbd5;
   --accent: #0d7663;
   --accent-ink: #fff;
@@ -2313,3 +2313,4 @@ ul {
   color: var(--muted);
   margin-top: 20px;
 }
+
