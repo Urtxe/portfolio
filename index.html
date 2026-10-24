@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Mikel Urtxegi · Software Developer | Full-Stack, IA y automatización
+    </title>
+    <meta
+      name="description"
+      content="Soy Mikel Urtxegi, desarrollador Full-Stack en Donostia. Creo aplicaciones reales con Python, JavaScript, Docker e IA. Descubre mis proyectos y mi trayectoria."
+    />
+    <meta name="theme-color" content="#101211" />
+    <meta name="author" content="Mikel Urtxegi García" />
+    <link rel="canonical" href="__SITE_URL__" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta
+      property="og:site_name"
+      content="Mikel Urtxegi · Software Developer"
+    />
+    <meta
+      property="og:title"
+      content="Mikel Urtxegi · De la idea a producción."
+    />
+    <meta
+      property="og:description"
+      content="Desarrollo Full-Stack, inteligencia artificial y automatización. Proyectos reales, desde el concepto hasta producción."
+    />
+    <meta property="og:url" content="__SITE_URL__" />
+    <meta property="og:image" content="__SOCIAL_IMAGE__" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mikel Urtxegi, Software Developer. De la idea a producción."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mikel Urtxegi · Software Developer" />
+    <meta
+      name="twitter:description"
+      content="Full-Stack, IA y automatización. Construyo soluciones digitales de la idea a producción."
+    />
+    <meta name="twitter:image" content="__SOCIAL_IMAGE__" />
+    <meta
+      name="twitter:image:alt"
+      content="Mikel Urtxegi. De la idea a producción."
+    />
+    <script type="application/ld+json">
+      __SCHEMA__
+    </script>
+    <script>
+      (() => {
+        let theme;
+        try {
+          theme = localStorage.getItem("portfolio-theme");
+        } catch {}
+        document.documentElement.dataset.theme =
+          theme === "dark" || theme === "light"
+            ? theme
+            : matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
