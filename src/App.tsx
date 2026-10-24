@@ -274,7 +274,15 @@ function App() {
       <a href="#contenido" className="skip-link">
         Saltar al contenido
       </a>
-      <header className="header">
+      <header
+        className="header"
+        onKeyDown={(event) => {
+          if (event.key === "Escape" && menuOpen) {
+            setMenuOpen(false);
+            document.querySelector<HTMLButtonElement>(".menu-button")?.focus();
+          }
+        }}
+      >
         <div className="container header-inner">
           <a
             className="brand"
@@ -328,14 +336,6 @@ function App() {
           aria-label="Navegación móvil"
           className="mobile-nav"
           hidden={!menuOpen}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") {
-              setMenuOpen(false);
-              document
-                .querySelector<HTMLButtonElement>(".menu-button")
-                ?.focus();
-            }
-          }}
         >
           {[...navigation, { id: "contacto", label: "Contacto" }].map(
             (item) => (

@@ -5,6 +5,7 @@ import { renderToString } from "react-dom/server";
 
 // Genera HTML completo usando los mismos componentes que hidrata el navegador.
 const server = await createServer({
+  mode: "production",
   server: { middlewareMode: true },
   appType: "custom",
 });
