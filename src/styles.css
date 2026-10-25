@@ -489,6 +489,55 @@ ul {
   font-size: 11px;
   line-height: 2.4;
 }
+.run-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 1px solid #675282;
+  border-radius: 5px;
+  background: #2b223d;
+  color: #e6dff3;
+  font-size: 10px;
+  transition: background 160ms ease;
+}
+.run-profile:hover {
+  background: #44335f;
+}
+.run-profile:focus-visible,
+.profile-output a:focus-visible {
+  outline: 2px solid #c7b6ef;
+  outline-offset: 3px;
+}
+.profile-panels {
+  display: grid;
+}
+.profile-panels > .build-card-content {
+  grid-area: 1 / 1;
+}
+.profile-panels > [hidden] {
+  display: block;
+  visibility: hidden;
+}
+.profile-output:not([hidden]) {
+  animation: profile-reveal 220ms ease-out;
+}
+.profile-output a {
+  color: #c7b6ef;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@keyframes profile-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .code-comment {
   color: #b4a5c5;
   font-size: 9px;
@@ -1142,29 +1191,11 @@ ul {
   line-height: 2;
   margin-top: 18px;
 }
-.stack-note {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-top: 27px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.9;
-}
-.stack-note > svg {
-  color: var(--accent);
-  align-self: center;
-}
-.stack-note strong {
-  font-weight: 500;
-  color: var(--text);
-}
 .stack-context {
   color: var(--dim);
   font-size: 9px;
   line-height: 1.8;
   margin-top: 12px;
-  padding-left: 28px;
 }
 .about-section {
   display: grid;
@@ -2057,19 +2088,8 @@ ul {
     line-height: 2;
     margin-top: 18px;
   }
-  .stack-note {
-    font-size: 10px;
-    align-items: flex-start;
-    gap: 8px;
-    margin-top: 24px;
-  }
-  .stack-note svg {
-    align-self: flex-start;
-    margin-top: 3px;
-  }
   .stack-context {
     font-size: 9px;
-    padding-left: 24px;
   }
   .about-section {
     display: block;

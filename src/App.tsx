@@ -184,6 +184,7 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 function App() {
+  const [profileRunning, setProfileRunning] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [activeSection, setActiveSection] = useState("");
@@ -397,31 +398,65 @@ function App() {
                     <span />
                     <span />
                   </span>
-                  <span>perfil.ts</span>
-                  <Code2 size={14} />
+                  <span>{profileRunning ? "terminal" : "perfil.ts"}</span>
+                  <button
+                    type="button"
+                    className="run-profile"
+                    aria-pressed={profileRunning}
+                    aria-controls="profile-preview"
+                    onClick={() => setProfileRunning(!profileRunning)}
+                  >
+                    {profileRunning ? <Code2 size={13} /> : <Play size={13} />}
+                    {profileRunning ? "Ver código" : "Ejecutar perfil"}
+                  </button>
                 </div>
-                <div className="build-card-content">
-                  <span className="code-comment">
-                    // Mikel Urtxegi · Donostia
-                  </span>
-                  <p>
-                    <span className="code-purple">const</span> perfil = {"{"}
-                  </p>
-                  <p>
-                    &nbsp; rol:{" "}
-                    <span className="code-string">"Full-Stack"</span>,
-                  </p>
-                  <p>
-                    &nbsp; stack: [
-                    <span className="code-string">"Python", "JS"</span>],
-                  </p>
-                  <p>
-                    &nbsp; intereses: [
-                    <span className="code-string">"IA", "Web"</span>]
-                  </p>
-                  <p>
-                    {"}"};<span className="code-cursor" />
-                  </p>
+                <div className="profile-panels" id="profile-preview">
+                  <div className="build-card-content" hidden={profileRunning}>
+                    <span className="code-comment">
+                      // Mikel Urtxegi · Donostia
+                    </span>
+                    <p>
+                      <span className="code-purple">const</span> perfil = {"{"}
+                    </p>
+                    <p>
+                      &nbsp; rol:{" "}
+                      <span className="code-string">"Full-Stack"</span>,
+                    </p>
+                    <p>
+                      &nbsp; stack: [
+                      <span className="code-string">"Python", "JS"</span>],
+                    </p>
+                    <p>
+                      &nbsp; intereses: [
+                      <span className="code-string">"IA", "Web"</span>]
+                    </p>
+                    <p>
+                      {"}"};<span className="code-cursor" />
+                    </p>
+                  </div>
+                  <div
+                    className="build-card-content profile-output"
+                    hidden={!profileRunning}
+                  >
+                    <span className="code-comment">$ ejecutar perfil.ts</span>
+                    <p>
+                      <span className="code-string">✓</span> Interfaces con React y JavaScript
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> APIs con Python y Django
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> Despliegues con Docker
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> IA aplicada a proyectos propios
+                    </p>
+                    <p>
+                      <a href="#proyectos">
+                        Explorar los proyectos <span aria-hidden="true">→</span>
+                      </a>
+                    </p>
+                  </div>
                 </div>
                 <div className="build-card-footer">
                   <span>
@@ -728,14 +763,6 @@ function App() {
                   <span className="stack-secondary">{group.secondary}</span>
                 </article>
               ))}
-            </div>
-            <div className="stack-note">
-              <Plus size={16} />
-              <p>
-                <strong>Conocimientos complementarios:</strong> Java, C#, .NET,
-                Oracle SQL, JSON, AJAX y Bootstrap. VS Code, Visual Studio y
-                PyCharm como herramientas de desarrollo.
-              </p>
             </div>
             <p className="stack-context">
               Mi experiencia combina trabajo en PKF Attest y proyectos propios.

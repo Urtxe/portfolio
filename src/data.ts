@@ -135,7 +135,7 @@ export const stack = [
     icon: Database,
     description: "Persistencia e información con una estructura útil.",
     primary: ["PostgreSQL", "MySQL", "Firestore", "SQL"],
-    secondary: "Conocimientos complementarios de Oracle SQL",
+    secondary: "Oracle SQL",
   },
   {
     title: "DevOps & Cloud",
