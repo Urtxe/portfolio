@@ -675,7 +675,7 @@ function App() {
             <p>
               Completé el ciclo de Desarrollo de Aplicaciones Web en ILERNA en
               junio de 2026 y realicé cuatro meses de prácticas en PKF Attest.
-              Actualmente continúo mi formación con el Bachelor en Informática
+              Actualmente continúo mi formación en Ingeniería Informática
               de UNIPRO.
             </p>
             <p>
@@ -774,11 +774,6 @@ function App() {
                 </article>
               ))}
             </div>
-            <p className="stack-context">
-              Mi experiencia combina trabajo en PKF Attest y proyectos propios.
-              La IA aplicada, la automatización y buena parte de la
-              infraestructura proceden de desarrollo práctico personal.
-            </p>
           </div>
         </section>
         <section
