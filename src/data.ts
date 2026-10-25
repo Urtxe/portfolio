@@ -165,7 +165,7 @@ export const timeline = [
   {
     date: "2026 — actualidad",
     tag: "Formación · en curso",
-    title: "Bachelor en Informática",
+    title: "Ingeniería Informática",
     organization: "UNIPRO · Universitat Digital Europea",
     text: "Continúo ampliando mi formación en informática mientras desarrollo mis propios proyectos.",
   },
