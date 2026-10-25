@@ -373,8 +373,9 @@ function App() {
                 </span>
               </h1>
               <p className="hero-description">
-                Desarrollo aplicaciones web en PKF Attest y proyectos propios
-                que combinan inteligencia artificial y automatización.
+                Desarrollador Full-Stack en PKF Attest. Trabajo con Python,
+                JavaScript y Docker, y creo proyectos propios de desarrollo web,
+                inteligencia artificial y automatización.
               </p>
               <div className="hero-buttons">
                 <a href="#proyectos" className="button primary-button">
