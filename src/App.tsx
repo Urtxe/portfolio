@@ -237,7 +237,7 @@ function App() {
       { rootMargin: "-10% 0px -15% 0px", threshold: 0.35 },
     );
     document
-      .querySelectorAll(".project-art, .screenshot-scene")
+      .querySelectorAll(".project-art, .screenshot-scene, .timeline-content")
       .forEach((preview) => observer.observe(preview));
     return () => observer.disconnect();
   }, []);
@@ -346,7 +346,7 @@ function App() {
           )}
         </nav>
       </header>
-      <main id="contenido">
+      <main id="contenido" className={motionPaused ? "motion-paused" : undefined}>
         <section
           id="inicio"
           className="hero container"

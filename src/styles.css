@@ -1436,6 +1436,26 @@ ul {
 .timeline-item:last-child .timeline-content {
   padding-bottom: 0;
 }
+.timeline-content.is-in-view:before {
+  animation: timeline-pulse 3s ease-out infinite;
+}
+.timeline-item:nth-child(2n) .timeline-content:before {
+  animation-delay: -1s;
+}
+.timeline-item:nth-child(3n) .timeline-content:before {
+  animation-delay: -2s;
+}
+.motion-paused .timeline-content:before {
+  animation-play-state: paused;
+}
+@keyframes timeline-pulse {
+  0% {
+    box-shadow: 0 0 0 1px var(--border), 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  70%, 100% {
+    box-shadow: 0 0 0 1px var(--border), 0 0 0 10px transparent;
+  }
+}
 .timeline-tag {
   font-size: 8px;
   text-transform: uppercase;
