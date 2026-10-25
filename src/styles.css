@@ -1006,6 +1006,23 @@ ul {
   .featured-project:focus-within .balance-screenshot {
     transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
   }
+  @media (max-width: 640px), (hover: none) {
+    .project-art.is-in-view::after {
+      transform: translateX(130%);
+    }
+    .project-art.is-in-view > div {
+      transform: scale(1.06) rotate(-2deg);
+    }
+    .project-art.is-in-view .layers-art > span:first-child {
+      transform: translateX(-12px);
+    }
+    .project-art.is-in-view .layers-art > span:last-child {
+      transform: translateX(12px);
+    }
+    .screenshot-scene.is-in-view .balance-screenshot {
+      transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
+    }
+  }
   @media (hover: hover) and (pointer: fine) {
     .project-card:hover .project-art::after {
       transform: translateX(130%);

@@ -228,6 +228,20 @@ function App() {
     };
   }, []);
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-in-view", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "-10% 0px -15% 0px", threshold: 0.35 },
+    );
+    document
+      .querySelectorAll(".project-art, .screenshot-scene")
+      .forEach((preview) => observer.observe(preview));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
     if (!copyStatus) return;
     const timer = window.setTimeout(() => setCopyStatus(""), 4000);
     return () => window.clearTimeout(timer);
