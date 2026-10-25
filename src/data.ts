@@ -148,6 +148,7 @@ export const stack = [
       "GitHub Actions",
       "Linux",
       "Firebase",
+      "AWS",
     ],
     secondary:
       "Raspberry Pi · Hosting & Cloud Functions · Vercel · CI/CD · operación básica de servicios",
