@@ -417,6 +417,27 @@ ul {
   isolation: isolate;
   overflow: hidden;
 }
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 35%, #9561ff55, transparent 50%),
+    radial-gradient(ellipse at 70% 65%, #35cbd644, transparent 45%);
+  filter: blur(24px);
+  mask-image: radial-gradient(ellipse, #000 25%, transparent 70%);
+  animation: halo-flow 12s ease-in-out infinite alternate;
+}
+@keyframes halo-flow {
+  from {
+    transform: translate(-5%, 4%) rotate(-12deg) scale(0.9);
+  }
+  to {
+    transform: translate(5%, -4%) rotate(12deg) scale(1.1);
+  }
+}
 .orbit {
   position: absolute;
   border: 1px solid var(--border);
@@ -437,7 +458,8 @@ ul {
   background: var(--accent);
   box-shadow: 0 0 14px 3px color-mix(in srgb, var(--accent) 40%, transparent);
 }
-.motion-paused .orbit {
+.motion-paused .orbit,
+.hero-visual.motion-paused::before {
   animation-play-state: paused;
 }
 .motion-toggle {
@@ -953,6 +975,54 @@ ul {
   border-bottom: 1px solid var(--border);
   padding: 22px 26px;
   color: #dac8ed;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .project-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 25%, #ffffff14 50%, transparent 75%);
+    transform: translateX(-130%);
+    transition: transform 850ms ease;
+  }
+  .project-art > div,
+  .layers-art > span,
+  .balance-screenshot {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .project-card:focus-within .project-art::after {
+    transform: translateX(130%);
+  }
+  .project-card:focus-within .project-art > div {
+    transform: scale(1.04) rotate(-2deg);
+  }
+  .project-card:focus-within .layers-art > span:first-child {
+    transform: translateX(-12px);
+  }
+  .project-card:focus-within .layers-art > span:last-child {
+    transform: translateX(12px);
+  }
+  .featured-project:focus-within .balance-screenshot {
+    transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .project-card:hover .project-art::after {
+      transform: translateX(130%);
+    }
+    .project-card:hover .project-art > div {
+      transform: scale(1.04) rotate(-2deg);
+    }
+    .project-card:hover .layers-art > span:first-child {
+      transform: translateX(-12px);
+    }
+    .project-card:hover .layers-art > span:last-child {
+      transform: translateX(12px);
+    }
+    .featured-project:hover .balance-screenshot {
+      transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
+    }
+  }
 }
 .art-label,
 .concept-label {
