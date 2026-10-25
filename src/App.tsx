@@ -354,7 +354,7 @@ function App() {
         >
           <div className="hero-topline">
             <span className="eyebrow">
-              <span className="status-dot" /> MIKEL URTXEGI / SOFTWARE DEVELOPER
+              <span className="status-dot" /> PORTFOLIO / DESARROLLO WEB
             </span>
             <span className="hero-location">
               <MapPin size={13} />
@@ -373,9 +373,8 @@ function App() {
                 </span>
               </h1>
               <p className="hero-description">
-                Desarrollador Full-Stack en PKF Attest. Trabajo con Python,
-                JavaScript y Docker, y desarrollo proyectos propios de
-                aplicaciones web, inteligencia artificial y automatización.
+                Desarrollo aplicaciones web en PKF Attest y proyectos propios
+                que combinan inteligencia artificial y automatización.
               </p>
               <div className="hero-buttons">
                 <a href="#proyectos" className="button primary-button">
@@ -437,7 +436,7 @@ function App() {
                 <div className="profile-panels" id="profile-preview">
                   <div className="build-card-content" hidden={profileRunning}>
                     <span className="code-comment">
-                      // Mikel Urtxegi · Donostia
+                      // De la idea al código
                     </span>
                     <p>
                       <span className="code-purple">const</span> perfil = {"{"}
@@ -487,7 +486,7 @@ function App() {
                     <GitBranch size={12} /> main
                   </span>
                   <span>
-                    <span className="status-dot" /> software developer
+                    <span className="status-dot" /> listo para ejecutar
                   </span>
                 </div>
               </div>
@@ -496,8 +495,8 @@ function App() {
                   <Code2 size={17} />
                 </span>
                 <span>
-                  Junior Software Developer
-                  <small>PKF Attest · desde septiembre de 2026</small>
+                  Actualmente en PKF Attest
+                  <small>Desde septiembre de 2026</small>
                 </span>
                 <BriefcaseBusiness size={15} />
               </div>
