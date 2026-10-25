@@ -17,6 +17,7 @@ import {
   MessageCircle,
   Moon,
   Phone,
+  Pause,
   Play,
   Plus,
   Sun,
@@ -185,6 +186,7 @@ function ProjectCard({ project }: { project: Project }) {
 }
 function App() {
   const [profileRunning, setProfileRunning] = useState(false);
+  const [motionPaused, setMotionPaused] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [activeSection, setActiveSection] = useState("");
@@ -383,14 +385,22 @@ function App() {
               </div>
             </div>
             <div
-              className="hero-visual"
+              className={`hero-visual${motionPaused ? " motion-paused" : ""}`}
               aria-label="Perfil técnico: Full-Stack, Python, JavaScript e inteligencia artificial"
             >
               <div className="visual-cross cross-one">+</div>
               <div className="visual-cross cross-two">+</div>
-              <div className="orbit orbit-one" />
-              <div className="orbit orbit-two" />
-              <div className="orbit orbit-three" />
+              <div className="orbit orbit-one" aria-hidden="true" />
+              <div className="orbit orbit-two" aria-hidden="true" />
+              <div className="orbit orbit-three" aria-hidden="true" />
+              <button
+                type="button"
+                className="motion-toggle"
+                onClick={() => setMotionPaused(!motionPaused)}
+                aria-label={motionPaused ? "Reanudar movimiento" : "Pausar movimiento"}
+              >
+                {motionPaused ? <Play size={13} /> : <Pause size={13} />}
+              </button>
               <div className="build-card">
                 <div className="build-card-top">
                   <span>

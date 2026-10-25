@@ -423,19 +423,62 @@ ul {
   border-radius: 50%;
   z-index: -1;
   opacity: 0.65;
+  pointer-events: none;
+  animation: orbit-drift 24s linear infinite;
+}
+.orbit::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px 3px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.motion-paused .orbit {
+  animation-play-state: paused;
+}
+.motion-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--muted);
+}
+.motion-toggle:hover {
+  color: var(--accent);
+}
+@keyframes orbit-drift {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .orbit-one {
   width: 310px;
   height: 310px;
+  animation-delay: -5s;
 }
 .orbit-two {
   width: 410px;
   height: 410px;
+  animation-duration: 36s;
+  animation-direction: reverse;
+  animation-delay: -14s;
 }
 .orbit-three {
   width: 510px;
   height: 510px;
   opacity: 0.35;
+  animation-duration: 48s;
+  animation-delay: -30s;
 }
 .visual-cross {
   position: absolute;
@@ -2284,6 +2327,9 @@ ul {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .motion-toggle {
+    display: none;
+  }
   html {
     scroll-behavior: auto;
   }
