@@ -1,13 +1,27 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import {
-  ArrowRight,
-  ArrowUpRight,
+  Bike,
+  CarFront,
+  FolderOpen,
+  Mail,
+  House,
+  BriefcaseBusiness,
   Check,
+  Code2,
   Copy,
+  ExternalLink,
+  GitBranch,
   MapPin,
   Menu,
+  MessageCircle,
   Moon,
+  Phone,
+  Pause,
+  Play,
+  Plus,
   Sun,
+  Terminal,
   X,
 } from "lucide-react";
 import {
@@ -18,7 +32,8 @@ import {
   stack,
   timeline,
 } from "./data";
-import FluidBackground from "./FluidBackground";
+import type { Project } from "./data";
+import { Github, Linkedin } from "./BrandIcons";
 
 const currentYear = new Date().getFullYear();
 
@@ -29,7 +44,7 @@ function External({
   label,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   label?: string;
 }) {
@@ -46,7 +61,6 @@ function External({
     </a>
   );
 }
-
 function Tags({ items }: { items: string[] }) {
   return (
     <ul className="tags" aria-label="Tecnologías">
@@ -56,70 +70,191 @@ function Tags({ items }: { items: string[] }) {
     </ul>
   );
 }
-
+function SectionHeading({
+  number,
+  label,
+  title,
+  id,
+  children,
+}: {
+  number: string;
+  label: string;
+  title: string;
+  id: string;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="section-heading">
+      <div>
+        <p className="eyebrow">
+          <span>{number} /</span> {label}
+        </p>
+        <h2 id={id}>{title}</h2>
+      </div>
+      {children && <p className="section-intro">{children}</p>}
+    </div>
+  );
+}
+function ProjectArt({ project }: { project: Project }) {
+  return (
+    <div className={`project-art art-${project.visual}`} aria-hidden="true">
+      <span className="art-label">{project.category.split(" · ")[0]}</span>
+      {project.visual === "kitchen" && (
+        <div className="recipe-art">
+          <span className="recipe-line" />
+          <span className="recipe-line" />
+          <span className="recipe-line" />
+          <span className="recipe-symbol">
+            L<span>01</span>
+          </span>
+          <div className="recipe-caption">
+            Recetas e ingredientes.
+            <br />
+            Costes y escandallos.
+          </div>
+        </div>
+      )}
+      {project.visual === "layers" && (
+        <div className="layers-art">
+          <span>
+            01 <b>Interfaz</b>
+            <Code2 size={18} />
+          </span>
+          <span>
+            02 <b>API</b>
+            <GitBranch size={18} />
+          </span>
+          <span>
+            03 <b>Datos</b>
+            <Terminal size={18} />
+          </span>
+        </div>
+      )}
+      {project.visual === "bike" && (
+        <div className="bike-art">
+          <Bike size={92} strokeWidth={1} />
+          <span>OREINBIKE / MTB KULTURA</span>
+        </div>
+      )}
+      {project.visual === "wood" && (
+        <div className="wood-art">
+          <span>
+            AV<span>CARPINTERÍA</span>
+          </span>
+          <div className="wood-lines" />
+        </div>
+      )}
+      {project.visual === "car" && (
+        <div className="bike-art">
+          <CarFront size={92} strokeWidth={1} />
+          <span>KOTXEA / BIDAIAK PARTEKATUZ</span>
+        </div>
+      )}
+      <span className="concept-label">Composición conceptual</span>
+    </div>
+  );
+}
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article
+      className={`project-card project-${project.visual}`}
+      id={project.id}
+    >
+      <ProjectArt project={project} />
+      <div className="project-body">
+        <div className="project-meta">
+          <span className="mono">/{project.number}</span>
+          <span className="project-status">{project.status}</span>
+        </div>
+        <h3>{project.name}</h3>
+        <p className="project-lead">{project.description}</p>
+        <p className="project-description">{project.detail}</p>
+        <Tags items={project.technologies} />
+        <div className="project-bottom">
+          {project.link ? (
+            <External href={project.link}>
+              {project.id === "meritum" ? "Probar Meritum" : "Visitar web"}{" "}
+              <ExternalLink size={14} />
+            </External>
+          ) : (
+            <span className="mono">{project.concept}</span>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [profileRunning, setProfileRunning] = useState(false);
+  const [motionPaused, setMotionPaused] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [copyStatus, setCopyStatus] = useState("");
+  const [theme, setTheme] = useState("dark");
   const [activeSection, setActiveSection] = useState("");
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-
+  const [copyStatus, setCopyStatus] = useState("");
   useEffect(() => {
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
     const syncTheme = () => {
       let preference: string | null = null;
       try {
         preference = localStorage.getItem("portfolio-theme");
       } catch {
-        /* El tema sigue disponible durante la sesión. */
+        /* El tema del sistema funciona sin almacenamiento. */
       }
       const next =
         preference === "light" || preference === "dark"
           ? preference
-          : media.matches
-            ? "dark"
-            : "light";
+          : "dark";
       document.documentElement.dataset.theme = next;
       setTheme(next);
     };
     syncTheme();
-    media.addEventListener("change", syncTheme);
-    return () => media.removeEventListener("change", syncTheme);
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -65% 0px" },
+      { rootMargin: "-15% 0px -65% 0px" },
     );
     document
       .querySelectorAll("main > section[id]")
       .forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-        menuButtonRef.current?.focus();
-      }
+    return () => {
+      observer.disconnect();
     };
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [menuOpen]);
-
+  }, []);
+  useEffect(() => {
+    const revealTargets = document.querySelectorAll(
+      ".section-heading, .about-copy > p, .stack-card, .timeline-item, .certifications",
+    );
+    revealTargets.forEach((target) => target.classList.add("scroll-reveal"));
+    document.documentElement.classList.add("has-scroll-reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.classList.contains("scroll-reveal")) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in-view");
+            observer.unobserve(entry.target);
+          } else
+            entry.target.classList.toggle("is-in-view", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "-10% 0px -15% 0px", threshold: 0.35 },
+    );
+    revealTargets.forEach((target) => observer.observe(target));
+    document
+      .querySelectorAll(".project-art, .screenshot-scene, .timeline-content")
+      .forEach((preview) => observer.observe(preview));
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("has-scroll-reveal");
+    };
+  }, []);
   useEffect(() => {
     if (!copyStatus) return;
     const timer = window.setTimeout(() => setCopyStatus(""), 4000);
     return () => window.clearTimeout(timer);
   }, [copyStatus]);
-
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
@@ -130,7 +265,6 @@ function App() {
       /* La selección sigue activa durante la sesión. */
     }
   }
-
   async function copyEmail() {
     try {
       await navigator.clipboard.writeText(profile.email);
@@ -139,18 +273,25 @@ function App() {
       setCopyStatus("No se pudo copiar. Puedes usar el enlace de correo.");
     }
   }
-
   return (
     <>
       <a href="#contenido" className="skip-link">
         Saltar al contenido
       </a>
-      <header className="header">
+      <header
+        className="header"
+        onKeyDown={(event) => {
+          if (event.key === "Escape" && menuOpen) {
+            setMenuOpen(false);
+            document.querySelector<HTMLButtonElement>(".menu-button")?.focus();
+          }
+        }}
+      >
         <div className="container header-inner">
           <a
             className="brand"
             href="#inicio"
-            aria-label="mu_ · Mikel Urtxegi, inicio"
+            aria-label="mu_ mikelurtxegi.dev · Mikel Urtxegi, inicio"
           >
             <span className="brand-mark">
               mu<span>_</span>
@@ -160,19 +301,17 @@ function App() {
             </span>
           </a>
           <nav aria-label="Navegación principal" className="desktop-nav">
-            {[...navigation, { id: "contacto", label: "Contacto" }].map(
-              (item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  aria-current={
-                    activeSection === item.id ? "location" : undefined
-                  }
-                >
-                  {item.label}
-                </a>
-              ),
-            )}
+            {navigation.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                aria-current={
+                  activeSection === item.id ? "location" : undefined
+                }
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
           <div className="header-actions">
             <button
@@ -180,20 +319,19 @@ function App() {
               onClick={toggleTheme}
               aria-label="Cambiar entre tema claro y oscuro"
             >
-              {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a href="#contacto" className="header-contact">
-              Hablemos <ArrowUpRight size={15} />
+              Hablemos <MessageCircle size={15} />
             </a>
             <button
-              ref={menuButtonRef}
               className="icon-button menu-button"
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              {menuOpen ? <X size={21} /> : <Menu size={21} />}
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -211,374 +349,463 @@ function App() {
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
-                <ArrowUpRight size={16} />
+                <span className="nav-marker" aria-hidden="true" />
               </a>
             ),
           )}
         </nav>
       </header>
-
-      <main id="contenido">
-        <section id="inicio" className="hero" aria-labelledby="hero-title">
-          <div className="hero-shell">
-            <FluidBackground />
-            <div className="hero-content container">
-              <div className="hero-topline">
-                <span className="eyebrow">
-                  <i className="status-dot" /> FULL-STACK · WEB · IA
+      <main id="contenido" className={motionPaused ? "motion-paused" : undefined}>
+        <section
+          id="inicio"
+          className="hero container"
+          aria-labelledby="hero-title"
+        >
+          <div className="hero-topline">
+            <span className="eyebrow">
+              <span className="status-dot" /> PORTFOLIO / DESARROLLO WEB
+            </span>
+            <span className="hero-location">
+              <MapPin size={13} />
+              {profile.location}
+            </span>
+          </div>
+          <div className="hero-layout">
+            <div className="hero-copy">
+              <h1 id="hero-title">
+                Mikel Urtxegi.
+                <br />
+                <span className="muted-title">Software</span>
+                <br />
+                <span className="accent-text">
+                  Developer<span className="title-period">.</span>
                 </span>
-                <span className="hero-location">
-                  <MapPin size={13} /> {profile.location}
-                </span>
+              </h1>
+              <p className="hero-description">
+                Desarrollador Full-Stack en PKF Attest. Trabajo con Python,
+                JavaScript y Docker, y creo proyectos propios de desarrollo web,
+                inteligencia artificial y automatización.
+              </p>
+              <div className="hero-buttons">
+                <a href="#proyectos" className="button primary-button">
+                  Ver proyectos <FolderOpen size={16} />
+                </a>
+                <a href="#contacto" className="button secondary-button">
+                  Contactar <Mail size={16} />
+                </a>
               </div>
-              <div className="hero-title-wrap">
-                <h1 id="hero-title">
-                  Mikel Urtxegi.
-                  <br />
-                  <span>Software Developer.</span>
-                </h1>
-              </div>
-              <div className="hero-bottom">
-                <p>
-                  Construyo productos digitales desde la interfaz hasta el
-                  despliegue. Actualmente en PKF Attest y creando proyectos
-                  propios en Donostia.
-                </p>
-                <div className="hero-actions">
-                  <a href="#proyectos" className="hero-primary-link">
-                    Explorar proyectos <ArrowRight size={16} />
-                  </a>
-                  <a href="#contacto" className="hero-secondary-link">
-                    Hablemos <ArrowUpRight size={15} />
-                  </a>
-                </div>
+              <div className="hero-socials">
+                <External href={profile.github}>
+                  <Github size={16} />
+                  GitHub
+                </External>
+                <External href={profile.linkedin}>
+                  <Linkedin size={16} />
+                  LinkedIn
+                </External>
+                <span className="hero-social-divider" />
+                <span className="mono">Python · JavaScript · Docker</span>
               </div>
             </div>
+            <div
+              className={`hero-visual${motionPaused ? " motion-paused" : ""}`}
+              aria-label="Perfil técnico: Full-Stack, Python, JavaScript e inteligencia artificial"
+            >
+              <div className="visual-cross cross-one">+</div>
+              <div className="visual-cross cross-two">+</div>
+              <div className="orbit orbit-one" aria-hidden="true">
+                <span className="orbit-arc" />
+              </div>
+              <div className="orbit orbit-two" aria-hidden="true">
+                <span className="orbit-arc" />
+              </div>
+              <div className="orbit orbit-three" aria-hidden="true">
+                <span className="orbit-arc" />
+              </div>
+              <button
+                type="button"
+                className="motion-toggle"
+                onClick={() => setMotionPaused(!motionPaused)}
+                aria-label={motionPaused ? "Reanudar movimiento" : "Pausar movimiento"}
+                aria-pressed={motionPaused}
+              >
+                {motionPaused ? <Play size={13} /> : <Pause size={13} />}
+              </button>
+              <div className="build-card">
+                <div className="build-card-top">
+                  <span>
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                  <span>{profileRunning ? "terminal" : "perfil.ts"}</span>
+                  <button
+                    type="button"
+                    className="run-profile"
+                    aria-pressed={profileRunning}
+                    aria-controls="profile-preview"
+                    onClick={() => setProfileRunning(!profileRunning)}
+                  >
+                    {profileRunning ? <Code2 size={13} /> : <Play size={13} />}
+                    {profileRunning ? "Ver código" : "Ejecutar perfil"}
+                  </button>
+                </div>
+                <div className="profile-panels" id="profile-preview">
+                  <div className="build-card-content" hidden={profileRunning}>
+                    <span className="code-comment">
+                      // De la idea al código
+                    </span>
+                    <p>
+                      <span className="code-purple">const</span> perfil = {"{"}
+                    </p>
+                    <p>
+                      &nbsp; rol:{" "}
+                      <span className="code-string">"Full-Stack"</span>,
+                    </p>
+                    <p>
+                      &nbsp; stack: [
+                      <span className="code-string">"Python", "JS"</span>],
+                    </p>
+                    <p>
+                      &nbsp; intereses: [
+                      <span className="code-string">"IA", "Web"</span>]
+                    </p>
+                    <p>
+                      {"}"};<span className="code-cursor" />
+                    </p>
+                  </div>
+                  <div
+                    className="build-card-content profile-output"
+                    hidden={!profileRunning}
+                  >
+                    <span className="code-comment">$ ejecutar perfil.ts</span>
+                    <p>
+                      <span className="code-string">✓</span> Interfaces con React y JavaScript
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> APIs con Python y Django
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> Despliegues con Docker
+                    </p>
+                    <p>
+                      <span className="code-string">✓</span> IA aplicada a proyectos propios
+                    </p>
+                    <p>
+                      <a href="#proyectos">
+                        Explorar los proyectos <span aria-hidden="true">→</span>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div className="build-card-footer">
+                  <span>
+                    <GitBranch size={12} /> main
+                  </span>
+                  <span>
+                    <span className="status-dot" /> listo para ejecutar
+                  </span>
+                </div>
+              </div>
+              <div className="shipping-label">
+                <span className="shipping-icon">
+                  <Code2 size={17} />
+                </span>
+                <span>
+                  Actualmente en PKF Attest
+                  <small>Desde septiembre de 2026</small>
+                </span>
+                <BriefcaseBusiness size={15} />
+              </div>
+              <span className="visual-coordinate mono">
+                43.3183° N &nbsp; 1.9812° W
+              </span>
+            </div>
+          </div>
+          <div className="hero-bottom">
+            <span className="mono">Full-Stack · IA · Automatización</span>
+            <a href="#proyectos" className="scroll-link">
+              Proyectos y trayectoria <FolderOpen size={13} />
+            </a>
           </div>
         </section>
-
         <section
           id="proyectos"
-          className="projects-section"
+          className="section container"
           aria-labelledby="projects-title"
         >
-          <div className="container section-inner">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">
-                  <span>01 /</span> PROYECTOS SELECCIONADOS
-                </p>
-                <h2 id="projects-title">
-                  Trabajo que
-                  <br />
-                  toma forma.
-                </h2>
-              </div>
-              <p className="section-intro">
-                Productos propios y proyectos web para clientes, desarrollados
-                con atención a lo que ocurre detrás de cada pantalla.
-              </p>
-            </div>
-            <article
-              className="featured-project"
-              aria-labelledby="balance-title"
-            >
-              <div className="featured-meta mono">
-                <span>/ 01 — PRODUCTO PROPIO</span>
-                <span>
-                  <i className="status-dot" /> EN PRODUCCIÓN
+          <SectionHeading
+            id="projects-title"
+            number="01"
+            label="PROYECTOS"
+            title="Aplicaciones y proyectos web."
+          >
+            Balance Laboral es mi aplicación principal.
+            <br />
+            También desarrollo aplicaciones propias y webs para clientes.
+          </SectionHeading>
+          <article className="featured-project" aria-labelledby="balance-title">
+            <div className="featured-copy">
+              <div className="featured-meta">
+                <span className="mono">/01 · PROYECTO PRINCIPAL</span>
+                <span className="live-badge">
+                  <span className="status-dot" />
+                  En producción
                 </span>
               </div>
-              <div className="featured-layout">
-                <div className="featured-copy">
-                  <p className="project-kicker">WEB · ANDROID · IA APLICADA</p>
-                  <h3 id="balance-title">
-                    Balance
-                    <br />
-                    Laboral<span className="period">.</span>
-                  </h3>
-                  <p className="featured-lead">
-                    Una herramienta para entender las horas que trabajamos.
-                  </p>
-                  <p className="featured-description">
-                    Nació de una necesidad que conocí en hostelería. Diseñé,
-                    desarrollé y publiqué una aplicación para registrar jornadas
-                    y consultar el balance laboral anual.
-                  </p>
-                  <ul className="feature-list">
-                    <li>Calendario, vacaciones, festivos y horas extra</li>
-                    <li>Convenios e informes PDF</li>
-                    <li>Asesor de IA con recuperación documental RAG</li>
-                    <li>Usuarios, suscripciones y sincronización</li>
-                  </ul>
-                  <Tags
-                    items={[
-                      "JavaScript",
-                      "Firebase",
-                      "Stripe",
-                      "Gemini API",
-                      "RAG",
-                    ]}
-                  />
-                  <details className="project-details">
-                    <summary>
-                      Detalles técnicos <span>+</span>
-                    </summary>
-                    <p>
-                      Frontend con HTML, CSS y JavaScript. Firebase
-                      Authentication para usuarios, Firestore para
-                      sincronización, Cloud Functions para la lógica de servidor
-                      y Firebase Hosting. Calendarios por localidad y sector,
-                      históricos anuales e integración de convenios mediante
-                      embeddings y recuperación documental.
-                    </p>
-                  </details>
-                  <div className="featured-links">
-                    <External
-                      href="https://balancelaboral.es"
-                      className="text-link"
-                    >
-                      Visitar balancelaboral.es <ArrowUpRight size={16} />
-                    </External>
-                    <External
-                      href="https://play.google.com/store/apps/details?id=es.balancelaboral.app"
-                      className="text-link"
-                    >
-                      Google Play <ArrowUpRight size={16} />
-                    </External>
-                  </div>
-                </div>
-                <div className="featured-media">
-                  <a
-                    className="screenshot-link"
-                    href="https://balancelaboral.es"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Abrir Balance Laboral"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}images/balance-laboral.webp`}
-                      alt="Captura real del calendario de Balance Laboral en su vista pública, sin datos personales"
-                      width="1440"
-                      height="1040"
-                      loading="lazy"
-                      className="balance-screenshot"
-                    />
-                    <span className="image-link">
-                      <ArrowUpRight size={19} />
-                    </span>
-                  </a>
-                  <div className="media-caption mono">
-                    <span>CAPTURA REAL · VISTA PÚBLICA</span>
-                    <span>APLICACIÓN WEB Y ANDROID</span>
-                  </div>
-                </div>
+              <div className="balance-brand">
+                <span className="balance-icon">
+                  <GitBranch size={25} />
+                </span>
+                <span>Web + Android</span>
               </div>
-            </article>
-            <div className="project-list" aria-label="Otros proyectos">
-              {projects.map((project) => (
-                <article
-                  className="project-row"
-                  key={project.id}
-                  id={project.id}
+              <h3 id="balance-title">Balance Laboral</h3>
+              <p className="featured-lead">
+                Registro de jornada y balance laboral anual.
+              </p>
+              <p className="featured-description">
+                Nació de una necesidad que conocí en hostelería: entender las
+                horas que trabajamos. Diseñé, desarrollé y publiqué una
+                aplicación para registrar jornadas y consultar el balance
+                laboral anual.
+              </p>
+              <ul className="feature-list">
+                <li>
+                  <Check size={15} />
+                  Calendario, vacaciones, festivos y horas extra
+                </li>
+                <li>
+                  <Check size={15} />
+                  Convenios, informes PDF y sincronización
+                </li>
+                <li>
+                  <Check size={15} />
+                  Asesor de IA con recuperación documental RAG
+                </li>
+                <li>
+                  <Check size={15} />
+                  Usuarios, suscripciones Stripe y PWA / Android TWA
+                </li>
+              </ul>
+              <Tags
+                items={[
+                  "JavaScript",
+                  "Firebase",
+                  "Stripe",
+                  "Gemini API",
+                  "RAG",
+                ]}
+              />
+              <details className="project-details">
+                <summary>
+                  De la interfaz al despliegue <Plus size={13} />
+                </summary>
+                <p>
+                  Frontend con HTML, CSS y JavaScript. Firebase Authentication
+                  para usuarios, Firestore para sincronización, Cloud Functions
+                  para la lógica de servidor y Firebase Hosting para
+                  publicación. Calendarios por localidad y sector, históricos
+                  anuales, funciones gratuitas y Premium e integración de
+                  convenios mediante embeddings y recuperación documental.
+                </p>
+              </details>
+              <div className="featured-links">
+                <External
+                  href="https://balancelaboral.es"
+                  className="button primary-button"
                 >
-                  <span className="project-number mono">/{project.number}</span>
-                  <div className="project-title">
-                    <h3>{project.name}</h3>
-                    <p>{project.category}</p>
-                  </div>
-                  <div className="project-summary">
-                    <p>{project.description}</p>
-                    <span>{project.status}</span>
-                    <details className="project-detail">
-                      <summary>
-                        Leer más <span>+</span>
-                      </summary>
-                      <p>{project.detail}</p>
-                      <p className="mono">{project.concept}</p>
-                    </details>
-                  </div>
-                  <div className="project-action">
-                    {project.link ? (
-                      <External
-                        href={project.link}
-                        label={`${project.name} · abrir proyecto`}
-                      >
-                        <ArrowUpRight size={19} />
-                      </External>
-                    ) : (
-                      <span aria-label="Sin enlace público">—</span>
-                    )}
-                  </div>
-                  <div className="project-tags">
-                    <Tags items={project.technologies} />
-                  </div>
-                </article>
-              ))}
+                  Abrir Balance Laboral <ExternalLink size={14} />
+                </External>
+                <External
+                  href="https://play.google.com/store/apps/details?id=es.balancelaboral.app"
+                  label="Balance Laboral en Google Play"
+                  className="project-text-link"
+                >
+                  <Play size={15} />
+                  Google Play
+                </External>
+              </div>
             </div>
-            <div className="project-footnote mono">
-              02 — 06 &nbsp; APLICACIONES, WEB Y PROYECTOS PARA CLIENTES
+            <div className="featured-media">
+              <div className="media-top">
+                <span className="mono">
+                  <span className="status-dot" /> balancelaboral.es
+                </span>
+                <External
+                  href="https://balancelaboral.es"
+                  label="Abrir Balance Laboral"
+                >
+                  <ExternalLink size={15} />
+                </External>
+              </div>
+              <div className="screenshot-scene">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/balance-laboral.webp`}
+                  alt="Captura real del calendario de Balance Laboral en su vista pública, sin datos personales"
+                  width="1440"
+                  height="1040"
+                  loading="lazy"
+                  className="balance-screenshot"
+                />
+              </div>
+              <div className="media-caption">
+                <span>CAPTURA REAL · VISTA PÚBLICA</span>
+                <span>
+                  Aplicación web y Android <Code2 size={13} />
+                </span>
+              </div>
             </div>
+          </article>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </div>
         </section>
-
         <section
           id="sobre-mi"
-          className="about-section section-light"
+          className="section about-section container"
           aria-labelledby="about-title"
         >
-          <div className="container about-layout">
-            <div className="about-intro">
-              <p className="eyebrow">
-                <span>02 /</span> SOBRE MÍ
-              </p>
-              <h2 id="about-title">
-                Una segunda
-                <br />
-                vocación<span className="period">.</span>
-              </h2>
-              <p className="about-signature">
-                {profile.fullName}
-                <span>SOFTWARE DEVELOPER · DONOSTIA</span>
-              </p>
-            </div>
-            <div className="about-copy">
-              <p className="about-lead">
-                De la hostelería al software: dos formas de trabajar con una
-                misma atención a las personas.
-              </p>
-              <p>
-                Trabajé más de 15 años en hostelería, aproximadamente diez de
-                ellos en el entorno de NH. Esa experiencia me enseñó a
-                organizar, escuchar y entender qué necesita quien está al otro
-                lado.
-              </p>
-              <p>
-                Después completé el ciclo de Desarrollo de Aplicaciones Web en
-                ILERNA y realicé prácticas en PKF Attest. Desde septiembre de
-                2026 trabajo allí como Junior Software Developer y continúo mis
-                estudios de Ingeniería Informática en UNIPRO.
-              </p>
-              <p>
-                En proyectos propios exploro interfaces web, backend, bases de
-                datos e inteligencia artificial aplicada. Balance Laboral reúne
-                muchas de esas piezas y parte de un problema que conocí de
-                primera mano.
-              </p>
-              <div className="languages mono">
-                <span>
-                  EUSKERA <b>NATIVO</b>
-                </span>
-                <span>
-                  CASTELLANO <b>NATIVO</b>
-                </span>
-                <span>
-                  INGLÉS <b>FLUIDO</b>
-                </span>
+          <div className="about-intro">
+            <p className="eyebrow">
+              <span>02 /</span> SOBRE MÍ
+            </p>
+            <h2 id="about-title">Sobre mí y mi recorrido.</h2>
+            <div className="about-signature">
+              <span className="signature-mark">mu_</span>
+              <div>
+                Mikel Urtxegi<span>Software Developer · Donostia</span>
               </div>
             </div>
+            <div className="language-pills">
+              <span>
+                Euskera <b>Nativo</b>
+              </span>
+              <span>
+                Castellano <b>Nativo</b>
+              </span>
+              <span>
+                Inglés <b>Fluido</b>
+              </span>
+            </div>
+          </div>
+          <div className="about-copy">
+            <p className="about-lead">
+              Soy Mikel Urtxegi, desarrollador de software en Donostia. Desde
+              septiembre de 2026 trabajo como Junior Software Developer en PKF
+              Attest.
+            </p>
+            <p>
+              Mi trayectoria anterior está vinculada a la hostelería, donde
+              trabajé durante más de 15 años, aproximadamente diez en el entorno
+              de NH. Después decidí orientar mi carrera hacia el desarrollo de
+              software.
+            </p>
+            <p>
+              Completé el ciclo de Desarrollo de Aplicaciones Web en ILERNA en
+              junio de 2026 y realicé cuatro meses de prácticas en PKF Attest.
+              Actualmente continúo mi formación en Ingeniería Informática
+              de UNIPRO.
+            </p>
+            <p>
+              En mis proyectos trabajo con interfaces web, backend, bases de
+              datos y despliegues. Balance Laboral reúne una parte importante de
+              ese trabajo y conecta con una necesidad que conocí durante mi
+              etapa en hostelería.
+            </p>
+            <p>
+              También utilizo herramientas de inteligencia artificial como apoyo
+              al desarrollo e integro funcionalidades de IA y automatización en
+              aplicaciones propias.
+            </p>
           </div>
         </section>
-
         <section
           id="trayectoria"
-          className="timeline-section"
+          className="section timeline-section container"
           aria-labelledby="timeline-title"
         >
-          <div className="container section-inner">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">
-                  <span>03 /</span> EXPERIENCIA Y FORMACIÓN
-                </p>
-                <h2 id="timeline-title">
-                  El camino
-                  <br />
-                  hasta aquí.
-                </h2>
-              </div>
-              <p className="section-intro">
-                Formación continua y experiencia en distintos contextos que hoy
-                conviven en mi trabajo.
+          <SectionHeading
+            id="timeline-title"
+            number="03"
+            label="EXPERIENCIA Y FORMACIÓN"
+            title="Experiencia y formación."
+          >
+            Mi actividad actual en desarrollo de software
+            <br />y la formación que la acompaña.
+          </SectionHeading>
+          <div className="timeline">
+            {timeline.map((item) => (
+              <article className="timeline-item" key={item.title}>
+                <div className="timeline-date mono">{item.date}</div>
+                <div className="timeline-content">
+                  <span className="timeline-tag">{item.tag}</span>
+                  <h3>{item.title}</h3>
+                  <p className="timeline-organization">{item.organization}</p>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="certifications">
+            <div className="certifications-heading">
+              <p className="eyebrow">
+                <span>+</span> FORMACIÓN CONTINUA
               </p>
+              <h3>Certificaciones y cursos.</h3>
+              <p>Certificaciones y cursos completados.</p>
             </div>
-            <div className="timeline">
-              {timeline.map((item, index) => (
-                <article
-                  className="timeline-item"
-                  key={`${item.title}-${item.date}`}
-                >
-                  <span className="timeline-index mono">0{index + 1}</span>
-                  <span className="timeline-date mono">{item.date}</span>
-                  <div className="timeline-content">
-                    <span className="timeline-tag">{item.tag}</span>
-                    <h3>{item.title}</h3>
-                    <p className="timeline-organization">{item.organization}</p>
-                    <p>{item.text}</p>
-                  </div>
-                </article>
+            <ul className="certification-list">
+              {certifications.map((cert) => (
+                <li key={cert.title}>
+                  <span className="certificate-check">
+                    <Check size={15} />
+                  </span>
+                  <span>
+                    <strong>{cert.title}</strong>
+                    <span>{cert.issuer}</span>
+                  </span>
+                  <span className="mono">{cert.year}</span>
+                </li>
               ))}
-            </div>
-            <div className="certifications">
-              <div className="certifications-heading">
-                <p className="eyebrow">FORMACIÓN CONTINUA</p>
-                <h3>Cursos y certificaciones.</h3>
-                <p>Formación completada</p>
-              </div>
-              <ul className="certification-list">
-                {certifications.map((cert) => (
-                  <li key={cert.title}>
-                    <Check size={14} />
-                    <span>
-                      <strong>{cert.title}</strong>
-                      <span>{cert.issuer}</span>
-                    </span>
-                    <span className="mono">{cert.year}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </ul>
           </div>
         </section>
-
         <section
           id="stack"
-          className="stack-section section-light"
+          className="section stack-section"
           aria-labelledby="stack-title"
         >
-          <div className="container section-inner">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">
-                  <span>04 /</span> HERRAMIENTAS
-                </p>
-                <h2 id="stack-title">
-                  Mi caja de
-                  <br />
-                  herramientas.
-                </h2>
-              </div>
-              <p className="section-intro">
-                Tecnologías que forman parte de mi trabajo, mis proyectos y mi
-                formación.
-              </p>
-            </div>
-            <div className="stack-list">
+          <div className="container">
+            <SectionHeading
+              id="stack-title"
+              number="04"
+              label="TECNOLOGÍAS Y HERRAMIENTAS"
+              title="Tecnologías que utilizo."
+            >
+              Herramientas utilizadas en mi trabajo, mis proyectos
+              <br />y mi formación.
+            </SectionHeading>
+            <div className="stack-grid">
               {stack.map((group, index) => (
-                <article className="stack-row" key={group.title}>
-                  <span className="mono stack-index">0{index + 1}</span>
-                  <h3>{group.title}</h3>
-                  <div>
-                    <p>{group.description}</p>
-                    <Tags items={group.primary} />
-                    <span className="stack-secondary">{group.secondary}</span>
+                <article
+                  className={`stack-card stack-card-${index}`}
+                  key={group.title}
+                >
+                  <div className="stack-card-top">
+                    <group.icon size={23} />
+                    <span className="mono">0{index + 1}</span>
                   </div>
+                  <h3>{group.title}</h3>
+                  <p>{group.description}</p>
+                  <Tags items={group.primary} />
+                  <span className="stack-secondary">{group.secondary}</span>
                 </article>
               ))}
             </div>
           </div>
         </section>
-
         <section
           id="contacto"
           className="contact-section"
@@ -590,21 +817,24 @@ function App() {
                 <span>05 /</span> CONTACTO
               </p>
               <span className="contact-location">
-                <MapPin size={14} /> DONOSTIA, GIPUZKOA · ESPAÑA
+                <MapPin size={14} />
+                Donostia, Gipuzkoa · España
               </span>
             </div>
             <div className="contact-layout">
               <div>
                 <h2 id="contact-title">
-                  ¿Hablamos<span className="period">?</span>
+                  ¿<span>Hablamos?</span>
+                  <MessageCircle className="contact-symbol" strokeWidth={1} />
                 </h2>
                 <p>
-                  Si tienes un proyecto, una idea o simplemente quieres saludar,
-                  puedes escribirme.
+                  Mi próximo proyecto puede ser el tuyo. Si quieres comentar una
+                  idea o simplemente ponerte en contacto conmigo, puedes
+                  escribirme.
                 </p>
                 <a className="contact-email" href={`mailto:${profile.email}`}>
                   {profile.email}
-                  <ArrowUpRight size={20} />
+                  <Mail size={20} />
                 </a>
                 <div className="copy-row">
                   <button onClick={copyEmail} className="copy-button">
@@ -612,7 +842,7 @@ function App() {
                       <Check size={14} />
                     ) : (
                       <Copy size={14} />
-                    )}{" "}
+                    )}
                     Copiar email
                   </button>
                   <span role="status" aria-live="polite">
@@ -623,26 +853,26 @@ function App() {
               <div className="contact-links">
                 <External href={profile.linkedin}>
                   <span>
+                    <Linkedin size={18} />
                     LinkedIn
-                    <ArrowUpRight size={16} />
                   </span>
                 </External>
                 <External href={profile.github}>
                   <span>
+                    <Github size={18} />
                     GitHub
-                    <ArrowUpRight size={16} />
                   </span>
                 </External>
                 <a href={`tel:${profile.phone}`}>
                   <span>
+                    <Phone size={18} />
                     +34 667 808 347
-                    <ArrowUpRight size={16} />
                   </span>
                 </a>
                 <External href="https://wa.me/34667808347">
                   <span>
-                    WhatsApp
-                    <ArrowUpRight size={16} />
+                    <MessageCircle size={18} />
+                    También por WhatsApp
                   </span>
                 </External>
               </div>
@@ -660,15 +890,11 @@ function App() {
           © {currentYear} Mikel Urtxegi{" "}
           <span>· Todos los derechos reservados.</span>
         </p>
-        <External href={profile.github} className="footer-github">
-          GITHUB <ArrowRight size={13} />
-        </External>
         <a href="#inicio" className="back-top">
-          VOLVER ARRIBA <ArrowUpRight size={14} />
+          Inicio <House size={14} />
         </a>
       </footer>
     </>
   );
 }
-
 export default App;

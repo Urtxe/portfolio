@@ -11,7 +11,7 @@
       name="description"
       content="Portfolio de Mikel Urtxegi, Junior Software Developer en PKF Attest, Donostia. Información sobre mis proyectos, tecnologías, experiencia y formación."
     />
-    <meta name="theme-color" content="#222f30" />
+    <meta name="theme-color" content="#010101" />
     <meta name="author" content="Mikel Urtxegi García" />
     <link rel="canonical" href="__SITE_URL__" />
     <meta property="og:type" content="website" />
@@ -56,9 +56,7 @@
         document.documentElement.dataset.theme =
           theme === "dark" || theme === "light"
             ? theme
-            : matchMedia("(prefers-color-scheme: light)").matches
-              ? "light"
-              : "dark";
+            : "dark";
       })();
     </script>
   </head>

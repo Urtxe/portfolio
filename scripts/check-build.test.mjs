@@ -27,9 +27,8 @@ test("el build publica HTML completo, enlaces internos válidos y SEO coherente"
   assert.ok(html.includes('href="https://pi4-urtxe.tailb33363.ts.net"'));
   assert.ok(html.includes('href="https://urtxe.github.io/kotxea-app/"'));
   assert.ok(html.includes("Todos los derechos reservados"));
-  assert.ok(html.includes('aria-controls="mobile-nav"'));
-  assert.ok(html.includes('href="mailto:mikelurtxegi@gmail.com"'));
-  assert.ok(!html.includes("Composición conceptual"));
+  assert.ok(html.includes('aria-controls="profile-preview"'));
+  assert.ok(html.includes("Ejecutar perfil"));
   for (const [, id] of html.matchAll(/href="#([^"]+)"/g))
     assert.ok(html.includes(`id="${id}"`), `Destino #${id}`);
   assert.ok(!html.includes("__SITE_URL__") && !html.includes("__SCHEMA__"));

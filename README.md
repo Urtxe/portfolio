@@ -31,20 +31,19 @@ El resultado publicable está en `dist/`. `preview` sirve ese resultado localmen
 ## Personalizar
 
 - `src/data.ts`: perfil, enlaces, proyectos secundarios, tecnologías, experiencia, formación y certificaciones. Se conserva una estructura de contenido en español preparada para futuras traducciones, sin selector de idiomas incompleto.
-- `src/App.tsx`: componentes de la página, contenido editorial y proyecto principal.
-- `src/FluidBackground.tsx`: fondo WebGL procedimental del hero, alternativa SVG local, control de movimiento y respeto a `prefers-reduced-motion`.
-- `src/styles.css`: paleta, composición, responsive y estilos del hero. Los colores están centralizados en variables CSS para los temas claro y oscuro.
+- `src/App.tsx`: componentes de la página, presentación, contenido editorial y proyecto principal.
+- `src/styles.css`: paleta carbón y cian, navegación en cápsulas mono, órbitas segmentadas del hero, composición responsive y animaciones de entrada sutiles.
 - `src/BrandIcons.tsx`: marcas de GitHub y LinkedIn; Lucide aporta los iconos de interfaz.
 - `index.html` y `vite.config.ts`: metadata y Schema.org. Actualizar los textos de SEO si cambia el posicionamiento del portfolio.
 - `public/favicon.svg`: identificador visual personalizado.
 
-Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/data.ts`. El tipo `Project` documenta los campos. `link` es opcional: los proyectos privados se presentan sin enlaces ficticios. La descripción ampliada y el concepto se muestran como contenido desplegable en cada fila.
+Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/data.ts`. El tipo `Project` documenta los campos. `link` es opcional: los proyectos privados se presentan sin enlaces ficticios. `visual` permite reutilizar una de las composiciones conceptuales; para una nueva dirección visual, amplía `ProjectArt` en `src/App.tsx`.
 
 ### Imágenes
 
-`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. Si se sustituye, actualizar dimensiones y descripción `alt` en `App.tsx`. Las demás filas presentan información editorial y no simulan pantallas de los proyectos.
+`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. Si se sustituye, actualizar dimensiones y descripción `alt` en `App.tsx`. El resto de proyectos usa gráficos SVG/CSS identificados como composiciones conceptuales, sin presentarlos como pantallas reales.
 
-`public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Las tipografías Manrope e IBM Plex Mono se autoalojan a través de Fontsource; no se solicitan a Google Fonts.
+`public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Tipografías Manrope, DM Sans e IBM Plex Mono autoalojadas a través de Fontsource; no se solicitan a Google Fonts.
 
 ### Fidelidad del contenido
 
@@ -78,7 +77,7 @@ El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, au
 
 ## Accesibilidad e interacciones
 
-HTML semántico, salto al contenido, navegación por teclado, foco visible, menú móvil con cierre mediante Escape, navegación activa, contraste en ambos temas y respeto a `prefers-reduced-motion`. El tema sigue al sistema si no hay elección guardada; el selector conserva la preferencia local. Copiar email ofrece confirmación accesible y un estado de error real, con enlace de correo siempre disponible. Sin formulario ni envíos simulados.
+HTML semántico, salto al contenido, navegación por teclado, foco visible, menú móvil con cierre mediante Escape, navegación activa, contraste en ambos temas y respeto a `prefers-reduced-motion`. El tema oscuro carbón/cian es el predeterminado; el selector conserva la preferencia local y permite activar el tema claro. El control del hero pausa las animaciones CSS de la página. Las animaciones de entrada se habilitan tras cargar JavaScript y el contenido permanece visible sin él o con movimiento reducido. Copiar email ofrece confirmación accesible y un estado de error real, con enlace de correo siempre disponible. Sin formulario ni envíos simulados.
 
 Las capturas y los informes de revisión local se guardan en `output/playwright/`, excluido de Git.
 
