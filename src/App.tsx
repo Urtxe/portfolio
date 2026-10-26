@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -19,7 +18,7 @@ import {
   stack,
   timeline,
 } from "./data";
-import { Github, Linkedin } from "./BrandIcons";
+import FluidBackground from "./FluidBackground";
 
 const currentYear = new Date().getFullYear();
 
@@ -221,51 +220,39 @@ function App() {
 
       <main id="contenido">
         <section id="inicio" className="hero" aria-labelledby="hero-title">
-          <div className="container">
-            <div className="hero-topline">
-              <span className="eyebrow">
-                <i className="status-dot" /> PORTFOLIO · DESARROLLO WEB
-              </span>
-              <span className="hero-location">
-                <MapPin size={13} /> {profile.location}
-              </span>
-            </div>
-            <h1 id="hero-title">
-              <span>Mikel</span>
-              <span className="hero-name-last">
-                Urtxegi<span className="period">.</span>
-              </span>
-            </h1>
-            <div className="hero-baseline">
-              <p className="hero-role">
-                Software Developer
-                <br />
-                <span>con experiencia en producto, web e IA.</span>
-              </p>
-              <div className="hero-aside">
+          <div className="hero-shell">
+            <FluidBackground />
+            <div className="hero-content container">
+              <div className="hero-topline">
+                <span className="eyebrow">
+                  <i className="status-dot" /> FULL-STACK · WEB · IA
+                </span>
+                <span className="hero-location">
+                  <MapPin size={13} /> {profile.location}
+                </span>
+              </div>
+              <div className="hero-title-wrap">
+                <h1 id="hero-title">
+                  Mikel Urtxegi.
+                  <br />
+                  <span>Software Developer.</span>
+                </h1>
+              </div>
+              <div className="hero-bottom">
                 <p>
                   Construyo productos digitales desde la interfaz hasta el
-                  despliegue. Trabajo como Junior Software Developer en PKF
-                  Attest y desarrollo proyectos propios en Donostia.
+                  despliegue. Actualmente en PKF Attest y creando proyectos
+                  propios en Donostia.
                 </p>
-                <a href="#proyectos" className="text-link">
-                  Ver proyectos <ArrowDownRight size={16} />
-                </a>
+                <div className="hero-actions">
+                  <a href="#proyectos" className="hero-primary-link">
+                    Explorar proyectos <ArrowRight size={16} />
+                  </a>
+                  <a href="#contacto" className="hero-secondary-link">
+                    Hablemos <ArrowUpRight size={15} />
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="hero-bottom">
-              <span className="mono">PYTHON · JAVASCRIPT · DOCKER</span>
-              <div className="hero-socials">
-                <External href={profile.github}>
-                  <Github size={15} /> GitHub
-                </External>
-                <External href={profile.linkedin}>
-                  <Linkedin size={15} /> LinkedIn
-                </External>
-              </div>
-              <a href="#proyectos" className="scroll-link">
-                DESPLAZARSE <ArrowDownRight size={14} />
-              </a>
             </div>
           </div>
         </section>

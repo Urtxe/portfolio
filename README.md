@@ -31,8 +31,9 @@ El resultado publicable está en `dist/`. `preview` sirve ese resultado localmen
 ## Personalizar
 
 - `src/data.ts`: perfil, enlaces, proyectos secundarios, tecnologías, experiencia, formación y certificaciones. Se conserva una estructura de contenido en español preparada para futuras traducciones, sin selector de idiomas incompleto.
-- `src/App.tsx`: componentes de la página, presentación, contenido editorial y proyecto principal.
-- `src/styles.css`: paleta, composición editorial, responsive y preferencias de movimiento. Los colores están centralizados en variables CSS para los temas claro y oscuro.
+- `src/App.tsx`: componentes de la página, contenido editorial y proyecto principal.
+- `src/FluidBackground.tsx`: fondo WebGL procedimental del hero, alternativa SVG local, control de movimiento y respeto a `prefers-reduced-motion`.
+- `src/styles.css`: paleta, composición, responsive y estilos del hero. Los colores están centralizados en variables CSS para los temas claro y oscuro.
 - `src/BrandIcons.tsx`: marcas de GitHub y LinkedIn; Lucide aporta los iconos de interfaz.
 - `index.html` y `vite.config.ts`: metadata y Schema.org. Actualizar los textos de SEO si cambia el posicionamiento del portfolio.
 - `public/favicon.svg`: identificador visual personalizado.
