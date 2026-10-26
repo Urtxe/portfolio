@@ -32,18 +32,18 @@ El resultado publicable está en `dist/`. `preview` sirve ese resultado localmen
 
 - `src/data.ts`: perfil, enlaces, proyectos secundarios, tecnologías, experiencia, formación y certificaciones. Se conserva una estructura de contenido en español preparada para futuras traducciones, sin selector de idiomas incompleto.
 - `src/App.tsx`: componentes de la página, presentación, contenido editorial y proyecto principal.
-- `src/styles.css`: paleta, composición, responsive y preferencias de movimiento. Los colores están centralizados en variables CSS para los temas claro y oscuro.
+- `src/styles.css`: paleta, composición editorial, responsive y preferencias de movimiento. Los colores están centralizados en variables CSS para los temas claro y oscuro.
 - `src/BrandIcons.tsx`: marcas de GitHub y LinkedIn; Lucide aporta los iconos de interfaz.
 - `index.html` y `vite.config.ts`: metadata y Schema.org. Actualizar los textos de SEO si cambia el posicionamiento del portfolio.
 - `public/favicon.svg`: identificador visual personalizado.
 
-Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/data.ts`. El tipo `Project` documenta los campos. `link` es opcional: los proyectos privados se presentan sin enlaces ficticios. `visual` permite reutilizar una de las composiciones conceptuales; para una nueva dirección visual, amplía `ProjectArt` en `src/App.tsx`.
+Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/data.ts`. El tipo `Project` documenta los campos. `link` es opcional: los proyectos privados se presentan sin enlaces ficticios. La descripción ampliada y el concepto se muestran como contenido desplegable en cada fila.
 
 ### Imágenes
 
-`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. Si se sustituye, actualizar dimensiones y descripción `alt` en `App.tsx`. El resto de proyectos usa gráficos SVG/CSS identificados como composiciones conceptuales, sin presentarlos como pantallas reales.
+`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. Si se sustituye, actualizar dimensiones y descripción `alt` en `App.tsx`. Las demás filas presentan información editorial y no simulan pantallas de los proyectos.
 
-`public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Tipografías Manrope, DM Sans e IBM Plex Mono autoalojadas a través de Fontsource; no se solicitan a Google Fonts.
+`public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Las tipografías Manrope e IBM Plex Mono se autoalojan a través de Fontsource; no se solicitan a Google Fonts.
 
 ### Fidelidad del contenido
 
@@ -67,7 +67,7 @@ Después ejecuta `npm run build`. No se configura un dominio que todavía no exi
 
 Repositorio: `https://github.com/Urtxe/portfolio`.
 
-El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, auditoría de dependencias, lint, compilación, prerenderizado y prueba del resultado. Solo despliega `main`; las pull requests se validan sin publicar. En Settings → Pages, el origen debe ser **GitHub Actions**. Cada push a `main` publica automáticamente el sitio en `https://urtxe.github.io/portfolio/`.
+El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, auditoría de dependencias, lint, compilación, prerenderizado y prueba del resultado. Solo despliega `develop`; las pull requests se validan sin publicar. En Settings → Pages, el origen debe ser **GitHub Actions**. Cada push a `develop` publica automáticamente el sitio en `https://urtxe.github.io/portfolio/`.
 
 ## Otros alojamientos estáticos
 
