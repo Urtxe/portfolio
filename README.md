@@ -32,7 +32,7 @@ El resultado publicable está en `dist/`. `preview` sirve ese resultado localmen
 
 - `src/data.ts`: perfil, enlaces, proyectos secundarios, tecnologías, experiencia, formación y certificaciones. Se conserva una estructura de contenido en español preparada para futuras traducciones, sin selector de idiomas incompleto.
 - `src/App.tsx`: componentes de la página, presentación, contenido editorial y proyecto principal.
-- `src/styles.css`: paleta carbón y cian, navegación en cápsulas mono, órbitas segmentadas del hero, composición responsive y animaciones de entrada sutiles.
+- `src/styles.css`: paleta violeta original, navegación en cápsulas mono, órbitas segmentadas del hero, composición responsive y animaciones de entrada sutiles.
 - `src/BrandIcons.tsx`: marcas de GitHub y LinkedIn; Lucide aporta los iconos de interfaz.
 - `index.html` y `vite.config.ts`: metadata y Schema.org. Actualizar los textos de SEO si cambia el posicionamiento del portfolio.
 - `public/favicon.svg`: identificador visual personalizado.
@@ -77,7 +77,7 @@ El workflow `.github/workflows/deploy.yml` ejecuta instalación reproducible, au
 
 ## Accesibilidad e interacciones
 
-HTML semántico, salto al contenido, navegación por teclado, foco visible, menú móvil con cierre mediante Escape, navegación activa, contraste en ambos temas y respeto a `prefers-reduced-motion`. El tema oscuro carbón/cian es el predeterminado; el selector conserva la preferencia local y permite activar el tema claro. El control del hero pausa las animaciones CSS de la página. Las animaciones de entrada se habilitan tras cargar JavaScript y el contenido permanece visible sin él o con movimiento reducido. Copiar email ofrece confirmación accesible y un estado de error real, con enlace de correo siempre disponible. Sin formulario ni envíos simulados.
+HTML semántico, salto al contenido, navegación por teclado, foco visible, menú móvil con cierre mediante Escape, navegación activa, contraste en ambos temas y respeto a `prefers-reduced-motion`. El tema oscuro violeta es el predeterminado; el selector conserva la preferencia local y permite activar el tema claro. El control del hero pausa las animaciones CSS de la página. Las animaciones de entrada se habilitan tras cargar JavaScript y el contenido permanece visible sin él o con movimiento reducido. Copiar email ofrece confirmación accesible y un estado de error real, con enlace de correo siempre disponible. Sin formulario ni envíos simulados.
 
 Las capturas y los informes de revisión local se guardan en `output/playwright/`, excluido de Git.
 

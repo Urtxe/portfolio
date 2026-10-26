@@ -25,35 +25,35 @@
 
 :root {
   font-family: "DM Sans Variable", sans-serif;
-  color: #e6e9e9;
-  background: #080a0b;
+  color: #f0edf8;
+  background: #100e18;
   line-height: 1.5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --bg: #080a0b;
-  --surface: #121617;
-  --raised: #191e20;
-  --text: #e6e9e9;
-  --muted: #adb7b8;
-  --dim: #899596;
-  --border: #2b3234;
-  --accent: #62d7e3;
-  --accent-ink: #06191c;
-  --header: rgba(8, 10, 11, 0.94);
+  --bg: #100e18;
+  --surface: #1a1727;
+  --raised: #242032;
+  --text: #f0edf8;
+  --muted: #b0a9c4;
+  --dim: #9e93b3;
+  --border: #383046;
+  --accent: #b5a1ff;
+  --accent-ink: #211833;
+  --header: rgba(16, 14, 24, 0.92);
   color-scheme: dark;
 }
 :root[data-theme="light"] {
-  --bg: #f5f7f7;
-  --surface: #e8eeee;
-  --raised: #e0e7e7;
-  --text: #1d2829;
-  --muted: #4f6061;
-  --dim: #607172;
-  --border: #cbd6d7;
-  --accent: #087b87;
+  --bg: #f7f5fc;
+  --surface: #eee9f7;
+  --raised: #e5def0;
+  --text: #2b223b;
+  --muted: #60506f;
+  --dim: #635174;
+  --border: #d6cce4;
+  --accent: #6741a3;
   --accent-ink: #fff;
-  --header: rgba(245, 247, 247, 0.95);
+  --header: rgba(247, 245, 252, 0.94);
   color-scheme: light;
   color: var(--text);
   background: var(--bg);
@@ -441,10 +441,10 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #080b0c;
+  background-color: #100e18;
   background-image:
-    radial-gradient(ellipse at center, #10191b 0%, #090c0d 56%, #050606 100%),
-    radial-gradient(#52636645 0.6px, transparent 0.7px);
+    radial-gradient(ellipse at center, #1a1727 0%, #100e18 56%, #100e18 100%),
+    radial-gradient(#38304645 0.6px, transparent 0.7px);
   background-size: auto, 24px 24px;
   isolation: isolate;
   overflow: hidden;
@@ -456,8 +456,8 @@ ul {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 44%, #62d7e326, transparent 34%),
-    radial-gradient(ellipse at 50% 50%, #62d7e30e, transparent 65%);
+    radial-gradient(ellipse at 50% 44%, #b5a1ff26, transparent 34%),
+    radial-gradient(ellipse at 50% 50%, #b5a1ff0e, transparent 65%);
   filter: blur(24px);
   mask-image: radial-gradient(ellipse, #000 25%, transparent 70%);
   animation: halo-flow 12s ease-in-out infinite alternate;
@@ -472,7 +472,7 @@ ul {
 }
 .orbit {
   position: absolute;
-  border: 1px solid #344043;
+  border: 1px solid #514365;
   border-radius: 50%;
   z-index: -1;
   opacity: 0.76;
@@ -486,7 +486,7 @@ ul {
   border-radius: inherit;
   background: repeating-conic-gradient(
     from 0deg,
-    #a5b9bdb0 0deg 0.8deg,
+    #b9abcdb0 0deg 0.8deg,
     transparent 1deg 10deg
   );
   -webkit-mask: radial-gradient(
@@ -508,10 +508,10 @@ ul {
   background: conic-gradient(
     from 18deg,
     transparent 0deg 56deg,
-    #62d7e31a 57deg 60deg,
-    #62d7e3 60.5deg 61.5deg,
-    #d4f8fb 62deg 62.4deg,
-    #62d7e392 63deg 65deg,
+    #b5a1ff1a 57deg 60deg,
+    #b5a1ff 60.5deg 61.5deg,
+    #ece3ff 62deg 62.4deg,
+    #b5a1ff92 63deg 65deg,
     transparent 66deg 360deg
   );
   -webkit-mask: radial-gradient(
@@ -609,22 +609,22 @@ ul {
 .build-card {
   width: 390px;
   max-width: 88%;
-  background: #131719;
-  border: 1px solid #30383a;
+  background: #1b172b;
+  border: 1px solid #514365;
   border-radius: 10px;
   box-shadow: 0 24px 65px #0005;
   transform: rotate(-4deg);
-  color: #e3e7e7;
+  color: #e6dff3;
   animation: enter-card 0.8s ease-out both;
 }
 .build-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #30383a;
+  border-bottom: 1px solid #514365;
   padding: 15px 18px;
   font-size: 10px;
-  color: #aab5b6;
+  color: #b7a8ca;
 }
 .build-card-top > span:first-child {
   display: flex;
@@ -633,11 +633,11 @@ ul {
 .build-card-top > span:first-child > span {
   height: 6px;
   width: 6px;
-  background: #364144;
+  background: #5a4c70;
   border-radius: 50%;
 }
 .build-card-top > span:first-child > span:first-child {
-  background: #62d7e3;
+  background: #b5a1ff;
 }
 .build-card-content {
   padding: 25px 22px 29px;
@@ -650,19 +650,19 @@ ul {
   gap: 6px;
   min-height: 32px;
   padding: 4px 8px;
-  border: 1px solid #3b4b4e;
+  border: 1px solid #675282;
   border-radius: 5px;
-  background: #13191b;
-  color: #e3e7e7;
+  background: #2b223d;
+  color: #e6dff3;
   font-size: 10px;
   transition: background 160ms ease;
 }
 .run-profile:hover {
-  background: #2b3537;
+  background: #44335f;
 }
 .run-profile:focus-visible,
 .profile-output a:focus-visible {
-  outline: 2px solid #6be0eb;
+  outline: 2px solid #c7b6ef;
   outline-offset: 3px;
 }
 .profile-panels {
@@ -679,7 +679,7 @@ ul {
   animation: profile-reveal 220ms ease-out;
 }
 .profile-output a {
-  color: #6be0eb;
+  color: #c7b6ef;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -694,14 +694,14 @@ ul {
   }
 }
 .code-comment {
-  color: #a9b4b6;
+  color: #b4a5c5;
   font-size: 9px;
 }
 .code-purple {
-  color: #6be0eb;
+  color: #c7b6ef;
 }
 .code-string {
-  color: #62d7e3;
+  color: #b5a1ff;
 }
 .code-spacer {
   height: 11px;
@@ -710,16 +710,16 @@ ul {
   width: 6px;
   height: 12px;
   display: inline-block;
-  background: #62d7e3;
+  background: #b5a1ff;
   vertical-align: middle;
   margin-left: 6px;
 }
 .build-card-footer {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #30383a;
+  border-top: 1px solid #514365;
   padding: 12px 18px;
-  color: #abb5b6;
+  color: #b5a6c8;
   font-size: 9px;
 }
 .build-card-footer > span {
@@ -728,7 +728,7 @@ ul {
   gap: 6px;
 }
 .build-card .status-dot {
-  background: #62d7e3;
+  background: #b5a1ff;
 }
 .shipping-label {
   position: absolute;
@@ -972,7 +972,7 @@ ul {
 .featured-media {
   display: flex;
   flex-direction: column;
-  background: #101415;
+  background: #211a32;
   border-left: 1px solid var(--border);
   overflow: hidden;
 }
@@ -980,7 +980,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #ccd2d3;
+  color: #d0bfe5;
   padding: 20px 24px;
   border-bottom: 1px solid #ffffff0d;
   font-size: 9px;
@@ -992,7 +992,7 @@ ul {
   gap: 7px;
 }
 .media-top .status-dot {
-  background: #62d7e3;
+  background: #b5a1ff;
 }
 .media-top a {
   padding: 5px;
@@ -1017,7 +1017,7 @@ ul {
   max-width: none;
   width: 690px;
   height: auto;
-  border: 5px solid #3d484a;
+  border: 5px solid #4b3c60;
   border-radius: 9px;
   box-shadow: 0 22px 60px #0007;
   transform: perspective(1400px) rotateY(-9deg) rotateZ(2deg);
@@ -1030,7 +1030,7 @@ ul {
   gap: 14px;
   padding: 19px 24px;
   font-size: 7px;
-  color: #c8d1d2;
+  color: #c7c8eb;
   border-top: 1px solid #ffffff0d;
 }
 .media-caption > span:last-child {
@@ -1064,7 +1064,7 @@ ul {
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   padding: 22px 26px;
-  color: #d1d6d7;
+  color: #dac8ed;
 }
 @media (prefers-reduced-motion: no-preference) {
   .project-art::after {
@@ -1150,7 +1150,7 @@ ul {
   letter-spacing: 0.6px;
 }
 .art-kitchen {
-  background: #1b2022;
+  background: #2b213d;
 }
 .recipe-art {
   position: absolute;
@@ -1197,8 +1197,8 @@ ul {
   top: 105%;
 }
 .art-layers {
-  background: #172022;
-  color: #c8d1d2;
+  background: #23263d;
+  color: #c7c8eb;
 }
 .layers-art {
   position: absolute;
@@ -1211,8 +1211,8 @@ ul {
   display: flex;
   align-items: center;
   gap: 20px;
-  border: 1px solid #62d7e34d;
-  background: #202729;
+  border: 1px solid #b5a1ff4d;
+  background: #32304a;
   box-shadow: 0 6px 12px #0003;
   border-radius: 5px;
   padding: 13px 18px;
@@ -1224,8 +1224,8 @@ ul {
   flex: 1;
 }
 .art-wood {
-  background: #191f21;
-  color: #d1d6d7;
+  background: #302538;
+  color: #dac8ed;
 }
 .wood-art {
   display: flex;
@@ -1254,8 +1254,8 @@ ul {
     ellipse at 90% 0,
     transparent,
     transparent 17px,
-    #62d7e30c 18px,
-    #62d7e30c 19px,
+    #b5a1ff0c 18px,
+    #b5a1ff0c 19px,
     transparent 20px
   );
   transform: rotate(-20deg);
@@ -2534,8 +2534,8 @@ ul {
 }
 
 .art-bike {
-  background: #172022;
-  color: #a9dfe2;
+  background: #25203b;
+  color: #c3b2ef;
   background-image: repeating-linear-gradient(
     150deg,
     transparent,
@@ -2574,13 +2574,13 @@ ul {
 }
 
 .art-car {
-  background: #172022;
-  color: #a9dfe2;
+  background: #24243c;
+  color: #d1c4f4;
   background-image: repeating-linear-gradient(
     90deg,
     transparent,
     transparent 49px,
-    #62d7e30a 50px,
+    #b5a1ff0a 50px,
     transparent 51px
   );
 }
