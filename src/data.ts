@@ -32,7 +32,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "labezio",
-    number: "02",
+    number: "03",
     name: "Labezio",
     category: "Aplicación · Full-Stack",
     status: "En desarrollo · entorno local",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     id: "meritum",
-    number: "03",
+    number: "04",
     name: "Meritum",
     category: "Aplicación · Full-Stack",
     status: "En desarrollo · versión de prueba",
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     id: "oreinbike",
-    number: "04",
+    number: "05",
     name: "Oreinbike",
     category: "Web · Proyecto para cliente",
     status: "Demo pública · dominio pendiente",
@@ -70,20 +70,6 @@ export const projects: Project[] = [
       "Proyecto web en euskera sobre infraestructuras ciclistas, instalaciones, comunidad y formación MTB. Incluye presentación de servicios, trabajos realizados y galerías. Desarrollado y pendiente de su despliegue en un dominio propio del cliente.",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive"],
     link: "https://urtxe.github.io/Oreinbike/",
-  },
-  {
-    id: "carpinteria",
-    number: "05",
-    name: "Carpintería Alex Val",
-    category: "Web · Proyecto para cliente",
-    status: "Publicada · dominio propio",
-    visual: "wood",
-    concept: "Carpintería a medida en Donostia",
-    description: "Web corporativa de carpintería a medida en Donostia.",
-    detail:
-      "Diseño de inspiración artesanal, servicios y galería de trabajos con zoom accesible. Contacto por WhatsApp y formulario con Web3Forms y hCaptcha. Imágenes WebP adaptadas a cada pantalla y carga diferida del captcha para mejorar el rendimiento móvil. Incluye SEO técnico y datos estructurados. Publicada en GitHub Pages con dominio propio y HTTPS.",
-    technologies: ["HTML / CSS", "JavaScript", "Web3Forms", "GitHub Pages"],
-    link: "https://alejandrovalcarpinteria.es/",
   },
   {
     id: "kotxea",

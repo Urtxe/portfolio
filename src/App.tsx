@@ -540,9 +540,10 @@ function App() {
             label="PROYECTOS"
             title="Aplicaciones y proyectos web."
           >
-            Balance Laboral es mi aplicación principal.
+            Balance Laboral es mi aplicación principal. También creo webs para
+            clientes
             <br />
-            También desarrollo aplicaciones propias y webs para clientes.
+            y desarrollo aplicaciones propias.
           </SectionHeading>
           <article className="featured-project" aria-labelledby="balance-title">
             <div className="featured-copy">
@@ -652,6 +653,89 @@ function App() {
                 <span>CAPTURA REAL · VISTA PÚBLICA</span>
                 <span>
                   Aplicación web y Android <Code2 size={13} />
+                </span>
+              </div>
+            </div>
+          </article>
+          <article
+            className="featured-project carpinteria-feature"
+            aria-labelledby="carpinteria-title"
+          >
+            <div className="featured-copy">
+              <div className="featured-meta">
+                <span className="mono">/02 · WEB PARA CLIENTE</span>
+                <span className="live-badge carpinteria-live-badge">
+                  <span className="status-dot" />
+                  Publicada · dominio propio
+                </span>
+              </div>
+              <div className="balance-brand carpinteria-brand">
+                <span className="balance-icon carpinteria-icon">
+                  <House size={22} />
+                </span>
+                <span>Carpintería · Donostia</span>
+              </div>
+              <h3 id="carpinteria-title">Carpintería Alex Val</h3>
+              <p className="featured-lead">
+                Una web cálida y a medida para un oficio hecho con detalle.
+              </p>
+              <p className="featured-description">
+                Diseñé y desarrollé la web de Alejandro Val para presentar sus
+                servicios, acercar sus trabajos a nuevos clientes y facilitar
+                el contacto desde cualquier pantalla.
+              </p>
+              <ul className="feature-list">
+                <li>
+                  <Check size={15} />
+                  Galería de trabajos con zoom accesible
+                </li>
+                <li>
+                  <Check size={15} />
+                  Imágenes WebP responsive y optimizadas para móvil
+                </li>
+                <li>
+                  <Check size={15} />
+                  Contacto por WhatsApp y formulario protegido
+                </li>
+              </ul>
+              <Tags
+                items={["HTML / CSS", "JavaScript", "Web3Forms", "GitHub Pages"]}
+              />
+              <div className="featured-links">
+                <External
+                  href="https://alejandrovalcarpinteria.es/"
+                  className="button primary-button carpinteria-button"
+                >
+                  Visitar la web <ExternalLink size={14} />
+                </External>
+              </div>
+            </div>
+            <div className="featured-media carpinteria-media">
+              <div className="media-top">
+                <span className="mono">
+                  <span className="status-dot" /> alejandrovalcarpinteria.es
+                </span>
+                <External
+                  href="https://alejandrovalcarpinteria.es/"
+                  label="Abrir Carpintería Alex Val"
+                >
+                  <ExternalLink size={15} />
+                </External>
+              </div>
+              <div className="screenshot-scene carpinteria-scene">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/carpinteria-alex-val.webp`}
+                  alt="Captura de la web de Carpintería Alex Val: armarios de madera y presentación de sus trabajos en Donostia"
+                  width="1440"
+                  height="850"
+                  loading="lazy"
+                  className="carpinteria-screenshot"
+                />
+              </div>
+              <div className="media-caption carpinteria-caption">
+                <span>CAPTURA REAL · WEB PÚBLICA</span>
+                <span>
+                  Diseño y desarrollo web <Code2 size={13} />
                 </span>
               </div>
             </div>

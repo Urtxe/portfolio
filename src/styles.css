@@ -1023,6 +1023,59 @@ ul {
   transform: perspective(1400px) rotateY(-9deg) rotateZ(2deg);
   transform-origin: left center;
 }
+.carpinteria-feature {
+  margin-top: 22px;
+}
+.carpinteria-feature .featured-media {
+  background: #2d2822;
+}
+.carpinteria-brand {
+  color: #756655;
+}
+.carpinteria-icon {
+  background: #a65c36;
+  color: #fff7ed;
+  border-radius: 50%;
+}
+.carpinteria-live-badge {
+  color: #a65c36;
+  background: color-mix(in srgb, #a65c36 7%, transparent);
+  border-color: color-mix(in srgb, #a65c36 22%, transparent);
+}
+.carpinteria-live-badge .status-dot {
+  background: #a65c36;
+}
+.carpinteria-button {
+  background: #a65c36;
+  color: #fff7ed;
+}
+.carpinteria-button:hover {
+  background: #87482b;
+  color: #fff7ed;
+}
+.carpinteria-scene {
+  background-color: #e9dfd0;
+  background-image: linear-gradient(
+    45deg,
+    #5e452a0a 25%,
+    transparent 25%,
+    transparent 75%,
+    #5e452a0a 75%
+  );
+}
+.carpinteria-screenshot {
+  max-width: none;
+  width: 690px;
+  height: auto;
+  border: 5px solid #6c5037;
+  border-radius: 9px;
+  box-shadow: 0 22px 60px #0006;
+  transform: perspective(1400px) rotateY(-9deg) rotateZ(2deg);
+  transform-origin: left center;
+}
+.carpinteria-caption {
+  color: #efe3d1;
+}
 .media-caption {
   display: flex;
   justify-content: space-between;
@@ -1942,6 +1995,11 @@ ul {
     transform: rotate(1deg);
     border-width: 4px;
   }
+  .carpinteria-screenshot {
+    width: 100%;
+    transform: rotate(1deg);
+    border-width: 4px;
+  }
   .featured-meta {
     flex-wrap: nowrap;
   }
@@ -2250,6 +2308,10 @@ ul {
     padding: 25px 0 0 18px;
   }
   .balance-screenshot {
+    width: 530px;
+    border-width: 3px;
+  }
+  .carpinteria-screenshot {
     width: 530px;
     border-width: 3px;
   }

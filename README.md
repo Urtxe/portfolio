@@ -41,7 +41,7 @@ Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/
 
 ### Imágenes
 
-`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. Si se sustituye, actualizar dimensiones y descripción `alt` en `App.tsx`. El resto de proyectos usa gráficos SVG/CSS identificados como composiciones conceptuales, sin presentarlos como pantallas reales.
+`public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. `public/images/carpinteria-alex-val.webp` es una captura de la portada pública de `https://alejandrovalcarpinteria.es/`, tomada el 13 de noviembre de 2026. Si se sustituye cualquiera, actualizar dimensiones y descripción `alt` en `App.tsx`. Los demás proyectos usan gráficos SVG/CSS identificados como composiciones conceptuales, sin presentarlos como pantallas reales.
 
 `public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Tipografías Manrope, DM Sans e IBM Plex Mono autoalojadas a través de Fontsource; no se solicitan a Google Fonts.
 

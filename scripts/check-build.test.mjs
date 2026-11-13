@@ -45,6 +45,7 @@ test("el build publica HTML completo, enlaces internos válidos y SEO coherente"
   assert.equal(schema.mainEntity.name, "Mikel Urtxegi García");
   for (const file of [
     "images/balance-laboral.webp",
+    "images/carpinteria-alex-val.webp",
     "images/social-card.png",
     "favicon.svg",
   ])
