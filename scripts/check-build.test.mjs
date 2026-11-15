@@ -34,6 +34,7 @@ test("el build publica HTML completo, enlaces internos válidos y SEO coherente"
     assert.ok(!html.includes(removed), removed);
   assert.ok(html.includes('href="https://pi4-urtxe.tailb33363.ts.net"'));
   assert.ok(html.includes('href="https://kotxea-urtxe.web.app"'));
+  assert.ok(html.includes("DEMO · DATOS FICTICIOS"));
   assert.ok(html.includes("Todos los derechos reservados"));
   assert.ok(html.includes('aria-controls="profile-preview"'));
   assert.ok(html.includes("Ejecutar perfil"));

@@ -819,17 +819,17 @@ function App() {
               <div className="screenshot-scene kotxea-scene">
                 <img
                   src={`${import.meta.env.BASE_URL}images/kotxea-app.webp`}
-                  alt="Captura real de la pantalla de acceso de la aplicación web Kotxea"
+                  alt="Captura de demostración de Kotxea con cuatro participantes, sus balances de conducción y un viaje reciente; todos los datos son ficticios"
                   width="1280"
-                  height="864"
+                  height="900"
                   loading="lazy"
                   className="kotxea-screenshot"
                 />
               </div>
               <div className="media-caption kotxea-caption">
-                <span>CAPTURA REAL · APP PÚBLICA</span>
+                <span>DEMO · DATOS FICTICIOS</span>
                 <span>
-                  Firebase · PWA <Code2 size={13} />
+                  Balance de turnos <Code2 size={13} />
                 </span>
               </div>
             </div>

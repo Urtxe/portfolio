@@ -43,7 +43,7 @@ Para añadir un proyecto secundario, incorpora una entrada a `projects` en `src/
 
 `public/images/balance-laboral.webp` es una captura real de la vista pública del calendario en `https://balancelaboral.es`, tomada el 24 de octubre de 2026 sin iniciar sesión ni añadir datos personales. Se rechazó la analítica opcional. `public/images/carpinteria-alex-val.webp` es una captura de la portada pública de `https://alejandrovalcarpinteria.es/`, tomada el 13 de noviembre de 2026. Si se sustituye cualquiera, actualizar dimensiones y descripción `alt` en `App.tsx`. Las tarjetas de proyectos secundarios usan gráficos SVG/CSS identificados como composiciones conceptuales, sin presentarlos como pantallas reales.
 
-`public/images/kotxea-app.webp` es una captura real de la pantalla pública de acceso de `https://kotxea-urtxe.web.app`, tomada el 15 de noviembre de 2026 sin iniciar sesión ni mostrar datos personales. Balance Laboral, Carpintería Alex Val y Kotxea se presentan como proyectos destacados con capturas reales.
+`public/images/kotxea-app.webp` es una captura de demostración de la pantalla de balance de Kotxea. Se tomó desde una copia local de la aplicación con nombres y viajes inventados, sin iniciar sesión ni consultar datos de producción. Balance Laboral y Carpintería Alex Val se presentan con capturas de sus sitios públicos; Kotxea muestra una captura de demostración con datos ficticios.
 
 `public/images/social-card.png` es la imagen social original de 1200 × 630 px. Puede sustituirse manteniendo su tamaño y ruta, o actualizando la metadata en `vite.config.ts`. Tipografías Manrope, DM Sans e IBM Plex Mono autoalojadas a través de Fontsource; no se solicitan a Google Fonts.
 
