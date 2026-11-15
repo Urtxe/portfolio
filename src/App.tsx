@@ -144,12 +144,6 @@ function ProjectArt({ project }: { project: Project }) {
           <div className="wood-lines" />
         </div>
       )}
-      {project.visual === "car" && (
-        <div className="bike-art">
-          <CarFront size={92} strokeWidth={1} />
-          <span>KOTXEA / BIDAIAK PARTEKATUZ</span>
-        </div>
-      )}
       <span className="concept-label">Composición conceptual</span>
     </div>
   );
@@ -540,10 +534,8 @@ function App() {
             label="PROYECTOS"
             title="Aplicaciones y proyectos web."
           >
-            Balance Laboral es mi aplicación principal. También creo webs para
-            clientes
-            <br />
-            y desarrollo aplicaciones propias.
+            Balance Laboral es mi aplicación principal. También desarrollo
+            aplicaciones propias y webs para clientes.
           </SectionHeading>
           <article className="featured-project" aria-labelledby="balance-title">
             <div className="featured-copy">
@@ -740,6 +732,108 @@ function App() {
               </div>
             </div>
           </article>
+          <article
+            className="featured-project kotxea-feature"
+            id="kotxea"
+            aria-labelledby="kotxea-title"
+          >
+            <div className="featured-copy">
+              <div className="featured-meta">
+                <span className="mono">/03 · APLICACIÓN PROPIA</span>
+                <span className="live-badge kotxea-live-badge">
+                  <span className="status-dot" /> Publicada · PWA
+                </span>
+              </div>
+              <div className="balance-brand kotxea-brand">
+                <span className="balance-icon kotxea-icon">
+                  <CarFront size={23} />
+                </span>
+                <span>Viajes compartidos · Euskera</span>
+              </div>
+              <h3 id="kotxea-title">Kotxea</h3>
+              <p className="featured-lead">
+                Coordina grupos, viajes y turnos de conducción.
+              </p>
+              <p className="featured-description">
+                Aplicación para organizar viajes compartidos con varios grupos
+                y participantes. Registra quién conduce y quién viaja, consulta
+                el historial y calcula el balance de cada persona. Los datos
+                se sincronizan entre dispositivos.
+              </p>
+              <ul className="feature-list">
+                <li>
+                  <Check size={15} />
+                  Historial de viajes, balances y saldos iniciales
+                </li>
+                <li>
+                  <Check size={15} />
+                  Grupos, invitaciones y solicitudes de acceso
+                </li>
+                <li>
+                  <Check size={15} />
+                  Instalable en móvil y sincronizada con la nube
+                </li>
+              </ul>
+              <Tags
+                items={[
+                  "JavaScript",
+                  "Firebase Authentication",
+                  "Cloud Firestore",
+                  "Cloud Functions",
+                  "PWA",
+                ]}
+              />
+              <details className="project-details">
+                <summary>
+                  Autenticación, datos y despliegue <Plus size={13} />
+                </summary>
+                <p>
+                  Aplicación web estática con Firebase Authentication y
+                  Firestore para cuentas, grupos, viajes e invitaciones. Las
+                  reglas de Firestore aplican permisos por miembro y rol; Cloud
+                  Functions protege las operaciones de superadministración.
+                  Firebase Hosting publica la app instalable como PWA.
+                </p>
+              </details>
+              <div className="featured-links">
+                <External
+                  href="https://kotxea-urtxe.web.app"
+                  className="button primary-button kotxea-button"
+                >
+                  Abrir Kotxea <ExternalLink size={14} />
+                </External>
+              </div>
+            </div>
+            <div className="featured-media kotxea-media">
+              <div className="media-top">
+                <span className="mono">
+                  <span className="status-dot" /> kotxea-urtxe.web.app
+                </span>
+                <External
+                  href="https://kotxea-urtxe.web.app"
+                  label="Abrir Kotxea"
+                >
+                  <ExternalLink size={15} />
+                </External>
+              </div>
+              <div className="screenshot-scene kotxea-scene">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/kotxea-app.webp`}
+                  alt="Captura real de la pantalla de acceso de la aplicación web Kotxea"
+                  width="1280"
+                  height="864"
+                  loading="lazy"
+                  className="kotxea-screenshot"
+                />
+              </div>
+              <div className="media-caption kotxea-caption">
+                <span>CAPTURA REAL · APP PÚBLICA</span>
+                <span>
+                  Firebase · PWA <Code2 size={13} />
+                </span>
+              </div>
+            </div>
+          </article>
           <div className="projects-grid">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
@@ -794,9 +888,10 @@ function App() {
             </p>
             <p>
               En mis proyectos trabajo con interfaces web, backend, bases de
-              datos y despliegues. Balance Laboral reúne una parte importante de
-              ese trabajo y conecta con una necesidad que conocí durante mi
-              etapa en hostelería.
+              datos y despliegues. Balance Laboral y Kotxea reúnen autenticación,
+              persistencia y servicios de Firebase en aplicaciones reales;
+              Balance Laboral conecta además con una necesidad que conocí
+              durante mi etapa en hostelería.
             </p>
             <p>
               También utilizo herramientas de inteligencia artificial como apoyo

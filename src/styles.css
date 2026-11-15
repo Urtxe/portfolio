@@ -1073,6 +1073,52 @@ ul {
   transform: perspective(1400px) rotateY(-9deg) rotateZ(2deg);
   transform-origin: left center;
 }
+.kotxea-feature {
+  margin-top: 22px;
+}
+.kotxea-feature .featured-media {
+  background: #24364c;
+}
+.kotxea-brand {
+  color: #9fb8d1;
+}
+.kotxea-icon {
+  background: #8bd243;
+  color: #172a22;
+  border-radius: 12px;
+}
+.kotxea-live-badge {
+  color: #8bd243;
+  background: color-mix(in srgb, #8bd243 7%, transparent);
+  border-color: color-mix(in srgb, #8bd243 22%, transparent);
+}
+.kotxea-live-badge .status-dot {
+  background: #8bd243;
+}
+.kotxea-button {
+  background: #8bd243;
+  color: #172a22;
+}
+.kotxea-button:hover {
+  background: #75b834;
+  color: #172a22;
+}
+.kotxea-scene {
+  background-color: #1f3147;
+}
+.kotxea-screenshot {
+  max-width: none;
+  width: 690px;
+  height: auto;
+  border: 5px solid #536d87;
+  border-radius: 9px;
+  box-shadow: 0 22px 60px #0007;
+  transform: perspective(1400px) rotateY(-9deg) rotateZ(2deg);
+  transform-origin: left center;
+}
+.kotxea-caption {
+  background: #24364c;
+}
 .carpinteria-caption {
   color: #efe3d1;
 }
@@ -1146,7 +1192,8 @@ ul {
   .project-card:focus-within .layers-art > span:last-child {
     transform: translateX(12px);
   }
-  .featured-project:focus-within .balance-screenshot {
+  .featured-project:focus-within .balance-screenshot,
+  .featured-project:focus-within .kotxea-screenshot {
     transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
   }
   @media (max-width: 640px), (hover: none) {
@@ -1179,7 +1226,8 @@ ul {
     .project-card:hover .layers-art > span:last-child {
       transform: translateX(12px);
     }
-    .featured-project:hover .balance-screenshot {
+    .featured-project:hover .balance-screenshot,
+    .featured-project:hover .kotxea-screenshot {
       transform: perspective(1400px) rotateY(-3deg) rotateZ(0deg) scale(1.02);
     }
   }
@@ -2000,6 +2048,11 @@ ul {
     transform: rotate(1deg);
     border-width: 4px;
   }
+  .kotxea-screenshot {
+    width: 100%;
+    transform: rotate(1deg);
+    border-width: 4px;
+  }
   .featured-meta {
     flex-wrap: nowrap;
   }
@@ -2312,6 +2365,10 @@ ul {
     border-width: 3px;
   }
   .carpinteria-screenshot {
+    width: 530px;
+    border-width: 3px;
+  }
+  .kotxea-screenshot {
     width: 530px;
     border-width: 3px;
   }
@@ -2633,41 +2690,4 @@ ul {
   height: 35px;
   color: var(--muted);
   margin-top: 20px;
-}
-
-.art-car {
-  background: #24243c;
-  color: #d1c4f4;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 49px,
-    #b5a1ff0a 50px,
-    transparent 51px
-  );
-}
-.project-car {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 0.85fr 1fr;
-}
-.project-car .project-art {
-  height: 100%;
-  min-height: 230px;
-  border-bottom: 0;
-  border-right: 1px solid var(--border);
-}
-.project-car .project-description {
-  min-height: 0;
-}
-@media (max-width: 640px) {
-  .project-car {
-    display: block;
-  }
-  .project-car .project-art {
-    height: 185px;
-    min-height: 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-  }
 }
