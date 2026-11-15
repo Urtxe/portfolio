@@ -25,14 +25,14 @@ export type Project = {
   description: string;
   detail: string;
   technologies: string[];
-  visual: "kitchen" | "layers" | "bike" | "wood" | "car";
+  visual: "kitchen" | "layers" | "bike" | "wood";
   concept: string;
   link?: string;
 };
 export const projects: Project[] = [
   {
     id: "labezio",
-    number: "03",
+    number: "04",
     name: "Labezio",
     category: "Aplicación · Full-Stack",
     status: "En desarrollo · entorno local",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     id: "meritum",
-    number: "04",
+    number: "05",
     name: "Meritum",
     category: "Aplicación · Full-Stack",
     status: "En desarrollo · versión de prueba",
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     id: "oreinbike",
-    number: "05",
+    number: "06",
     name: "Oreinbike",
     category: "Web · Proyecto para cliente",
     status: "Demo pública · dominio pendiente",
@@ -70,20 +70,6 @@ export const projects: Project[] = [
       "Proyecto web en euskera sobre infraestructuras ciclistas, instalaciones, comunidad y formación MTB. Incluye presentación de servicios, trabajos realizados y galerías. Desarrollado y pendiente de su despliegue en un dominio propio del cliente.",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive"],
     link: "https://urtxe.github.io/Oreinbike/",
-  },
-  {
-    id: "kotxea",
-    number: "06",
-    name: "Kotxea",
-    category: "Aplicación · Coche compartido",
-    status: "Publicada",
-    visual: "car",
-    concept: "Viajes compartidos y balance de turnos",
-    description: "Organización de viajes y turnos para compartir coche.",
-    detail:
-      "Aplicación en euskera para compartir coche dentro de un grupo. Permite añadir participantes, registrar quién conduce y quién viaja, consultar el historial y calcular el balance de turnos de cada persona. Los datos se guardan en el navegador, con copias de seguridad en JSON.",
-    technologies: ["HTML", "CSS", "JavaScript", "localStorage"],
-    link: "https://urtxe.github.io/kotxea-app/",
   },
 ];
 export const stack = [
