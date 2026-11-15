@@ -1107,8 +1107,8 @@ ul {
   background-color: #1f3147;
 }
 .kotxea-screenshot {
-  max-width: none;
-  width: 690px;
+  max-width: min(100%, 530px);
+  width: 530px;
   height: auto;
   border: 5px solid #536d87;
   border-radius: 9px;
