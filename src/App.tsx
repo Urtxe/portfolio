@@ -820,8 +820,8 @@ function App() {
                 <img
                   src={`${import.meta.env.BASE_URL}images/kotxea-app.webp`}
                   alt="Captura de demostración de Kotxea con cuatro participantes, sus balances de conducción y un viaje reciente; todos los datos son ficticios"
-                  width="1280"
-                  height="900"
+                  width="960"
+                  height="665"
                   loading="lazy"
                   className="kotxea-screenshot"
                 />
