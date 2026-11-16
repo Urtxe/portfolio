@@ -31,21 +31,8 @@ export type Project = {
 };
 export const projects: Project[] = [
   {
-    id: "labezio",
-    number: "04",
-    name: "Labezio",
-    category: "Aplicación · Full-Stack",
-    status: "En desarrollo · entorno local",
-    visual: "kitchen",
-    concept: "Recetas, ingredientes y escandallos",
-    description: "Gestión de recetas y operaciones de cocina.",
-    detail:
-      "Evolución de RestaurantRecipes. Reúne recetas, ingredientes, costes y escalado de cantidades en una aplicación con frontend y backend separados. Actualmente continúa en desarrollo en local.",
-    technologies: ["Next.js", "Django REST", "PostgreSQL", "Docker"],
-  },
-  {
     id: "meritum",
-    number: "05",
+    number: "04",
     name: "Meritum",
     category: "Aplicación · Full-Stack",
     status: "En desarrollo · versión de prueba",
@@ -59,7 +46,7 @@ export const projects: Project[] = [
   },
   {
     id: "oreinbike",
-    number: "06",
+    number: "05",
     name: "Oreinbike",
     category: "Web · Proyecto para cliente",
     status: "Demo pública · dominio pendiente",

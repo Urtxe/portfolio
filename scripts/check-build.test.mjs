@@ -8,7 +8,6 @@ test("el build publica HTML completo, enlaces internos válidos y SEO coherente"
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
   for (const title of [
     "Balance Laboral",
-    "Labezio",
     "Meritum",
     "Oreinbike",
     "Junior Software Developer",
