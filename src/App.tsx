@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
   Bike,
-  CarFront,
   FolderOpen,
   Mail,
   House,
@@ -746,7 +745,13 @@ function App() {
               </div>
               <div className="balance-brand kotxea-brand">
                 <span className="balance-icon kotxea-icon">
-                  <CarFront size={23} />
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/kotxea-logo.png`}
+                    alt=""
+                    width="42"
+                    height="42"
+                    aria-hidden="true"
+                  />
                 </span>
                 <span>Viajes compartidos · Euskera</span>
               </div>

@@ -1083,9 +1083,15 @@ ul {
   color: #9fb8d1;
 }
 .kotxea-icon {
-  background: #8bd243;
-  color: #172a22;
   border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+}
+.kotxea-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .kotxea-live-badge {
   color: #8bd243;
